@@ -26,11 +26,10 @@ public class UserService {
 	public void save(User user) {
 		this.userRepository.save(user);
 	}
-	
-	/*
-	 * public User findByUsername(String username) { return
-	 * this.userRepository.findByUserusername(username); }
-	 */
+
+	public User findByUsername(String username) {
+		return this.userRepository.findByUsername(username);
+	}
 
 	/*
 	 * public User findById(int id) { return this.userRepository.getById(id);
@@ -43,6 +42,6 @@ public class UserService {
 	 * 
 	 * public void save(User user) { this.userRepository.save(user); }
 	 * 
-
+	 * 
 	 */
 }

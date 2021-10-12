@@ -55,4 +55,12 @@ public class User {
 		this.campaigns = campaigns;
 	}
 
+	public List<Campaign> getCampaigns() {
+		return campaigns;
+	}
+	
+	public void setCampaigns(List<Campaign> campaigns) {
+		this.campaigns = campaigns;
+	}
+	
 }

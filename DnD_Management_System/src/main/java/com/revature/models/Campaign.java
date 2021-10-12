@@ -12,6 +12,18 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+//Lombok
+@Getter
+@Setter
+@NoArgsConstructor
+//@AllArgsConstructor
+@ToString
+
 @Entity
 
 
@@ -22,8 +34,10 @@ public class Campaign {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int campaignId;
 	
+	@Column(name = "name")
+	String name;
 	@Column(name = "player_count") 
-	int player_count;
+	int playerCount;
 	
 	
 	@ManyToMany(mappedBy = "campaigns")
@@ -34,4 +48,11 @@ public class Campaign {
 	
 	@OneToMany(mappedBy = "campaign")
 	private List <DungeonMaster> dungeonMasters = new ArrayList<>();
+	
+	
+	public Campaign(String name, int playerCount) {
+		this.name = name;
+		this.playerCount = playerCount;
+	}
+	
 }
