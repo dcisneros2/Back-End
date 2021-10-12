@@ -1,20 +1,23 @@
 package com.revature.controller;
 
-import java.util.Map;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.models.Campaign;
-import com.revature.models.User;
 import com.revature.service.CampaignService;
-import com.revature.service.UserService;
 
 @RestController("CampaignController")
-
+@RequestMapping("/campaign")
 public class CampaignController {
 	private CampaignService campaignService;
 	
@@ -22,13 +25,14 @@ public class CampaignController {
 	public CampaignController(CampaignService campaignService) {
 		this.campaignService = campaignService;
 	}
+	
 	//TODO: Return message if campaign is made or not. Add Json return to GetMapping.
-	@GetMapping("/createCampaign")
-	public void createUser(@RequestParam Map<String, String> queryParams) {
-		Campaign campaign = new Campaign(
+	@PostMapping(path = "/createCampaign", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public void createCampaign(@RequestBody Campaign campaign) {
+/*		Campaign campaign = new Campaign(
 				queryParams.get("name"),
-				Integer.valueOf(queryParams.get("playercount"))
-				);
+				Integer.valueOf(queryParams.get("playerCount"))
+				);*/
 		this.campaignService.save(campaign);
 	}
 	
@@ -45,27 +49,9 @@ public class CampaignController {
 	}
 
 	
+	@GetMapping(path = "/getAll", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<Campaign>> getAllCampaigns(){
+		return new ResponseEntity<List<Campaign>>(this.campaignService.findAll(), HttpStatus.OK);
+	}
 	
-	/*
-	 * @GetMapping(path = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
-	 * public ResponseEntity<List<User>> findAll() {
-	 * 
-	 * return new ResponseEntity<List<User>>(this.userService.findAll(),
-	 * HttpStatus.OK); }
-	 * 
-	 * 
-	 * @GetMapping(path = "/name/{name}", produces =
-	 * MediaType.APPLICATION_JSON_VALUE) public User findByName(@PathVariable String
-	 * name) { return this.userService.findByName(name); }
-	 * 
-	 * @PostMapping(path = "/new", consumes = MediaType.APPLICATION_JSON_VALUE)
-	 * public void saveRecipe(@RequestBody User user) { this.userService.save(user);
-	 * }
-	 * 
-	 * @GetMapping(path = "/exception") public void throwException() { throw new
-	 * RuntimeException(); }
-	 * 
-	 * @GetMapping(path = "/exception-handling") public void
-	 * throwBusinessException() { throw new BusinessException(); }
-	 */
 }

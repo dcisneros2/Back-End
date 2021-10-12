@@ -55,4 +55,27 @@ public class Campaign {
 		this.playerCount = playerCount;
 	}
 	
+	public List<User> getUsers() {
+		return users;
+	}
+	
+	public void setUsers(List <User> users) {
+		this.users = users;
+	}
+	
+	public List<CharacterDnd> getCharacters() {
+		return characters;
+	}
+	
+	public void setCharacters(List<CharacterDnd> characters) {
+		this.characters = characters;
+	}
+	
+	public List<DungeonMaster> getDungeonMasters() {
+		return dungeonMasters;
+	}
+	
+	public void setDungeonMasters(List<DungeonMaster> dungeonMasters) {
+		this.dungeonMasters = dungeonMasters;
+	}
 }
