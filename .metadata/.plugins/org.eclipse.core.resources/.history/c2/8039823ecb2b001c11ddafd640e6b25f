@@ -1,0 +1,6 @@
+package com.revature.configuration;
+
+@Bean 
+public PasswordEncoder passwordEncoder(){ 
+    return new BCryptPasswordEncoder(); 
+}
