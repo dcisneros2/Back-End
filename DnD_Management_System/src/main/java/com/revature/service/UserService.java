@@ -1,13 +1,13 @@
 package com.revature.service;
 
-import javax.transaction.Transactional;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.revature.models.User;
 import com.revature.repositories.UserRepository;
+
 
 @Service("userService")
 public class UserService {
@@ -31,11 +31,22 @@ public class UserService {
 		return this.userRepository.findByUsername(username);
 	}
 
-	/*
-	 * public User findById(int id) { return this.userRepository.getById(id);
-	 * 
-	 * }
-	 */
+	public User findByUsernameAndPassword(String username, String password) {
+		User user = this.userRepository.findByUsernameAndPassword(username, password);
+		if (user == null) {
+			//TODO: Message to send to View. Either here or UserController
+			return null; 
+		}
+		else
+			return user;
+	}
+	
+	
+	  public User findById(int id) { 
+		  return this.userRepository.getById(id);
+	  
+	  }
+	 
 
 	/*
 	 * public List<User> findAll(){ return this.userRepository.findAll(); }

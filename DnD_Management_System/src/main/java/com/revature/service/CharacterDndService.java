@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.models.CharacterDnd;
+import com.revature.models.User;
 import com.revature.repositories.CharacterDndRepository;
 
 @Service("characterDndService")
@@ -29,7 +30,9 @@ public class CharacterDndService {
 		return this.characterDndRepository.findAll(); 
 	}
 
-	  
+	public CharacterDnd findByName(String name) {
+		return this.characterDndRepository.findByName(name);
+	}
 	  
 	 
 }

@@ -3,6 +3,10 @@ package com.revature.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.hibernate.internal.build.AllowSysOut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -25,9 +29,6 @@ import com.revature.repositories.UserRepository;
 public class UserController {
 
 	private UserService userService;
-
-	//@Autowired
-	//UserRepository userRepository;
 	
 	@Autowired
 	public UserController(UserService userService) {
@@ -39,16 +40,10 @@ public class UserController {
 		User user = new User(
 				queryParams.get("username"), 
 				queryParams.get("password"),
-				queryParams.get("accountType"),
-				null);
+				queryParams.get("accountType")
+				);
 		this.userService.save(user);
 	}
-	
-	//@GetMapping("/getUser/{id}")
-	//public User getUserById() {
-	//	return null;
-		
-	//}
 	
 	@GetMapping(path = "/getUser", produces = MediaType.APPLICATION_JSON_VALUE)
 	public User getUserByUsername(@RequestParam String username) {
@@ -56,6 +51,24 @@ public class UserController {
 		return this.userService.findByUsername(username);
 	}
 
+	
+	@PostMapping(path = "/signIn")
+	public void signIn(@RequestParam Map<String, String> queryParams, HttpServletRequest request) {
+		User user = this.userService.findByUsernameAndPassword(
+				queryParams.get("username"),
+				queryParams.get("password"));
+		
+		if(user == null) {
+			//TODO: Return message that user is not found.
+		}
+		else { 
+			HttpSession session = request.getSession();
+			session.setAttribute("userId", user.getPlayerId());
+			session.setAttribute("user", user);
+			System.out.println((String)session.getAttribute("username"));
+			//TODO: Return message that user was found and redirect to dashboard
+		}
+	}
 	
 	
 	/*

@@ -33,7 +33,8 @@ public class CharacterDnd {
 	@Column(name = "characterId") 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int characterId;
-	
+	@Column(name = "name")
+	String name;
 	
 	@ManyToOne
 	@JoinColumn(name = "campaignId")
@@ -47,6 +48,9 @@ public class CharacterDnd {
 	private DungeonMaster dungeonMaster;
 	
 	
+	public CharacterDnd(String name) {
+		this.name = name;
+	}
 	
 	public Campaign getCampaign() {
 		return campaign;
