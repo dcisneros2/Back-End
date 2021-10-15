@@ -52,23 +52,34 @@ public class UserController {
 
 	
 	@PostMapping(path = "/signIn")
-	public void signIn(@RequestParam Map<String, String> queryParams, HttpServletRequest request) {
+	public ResponseEntity<String>signIn (@RequestParam Map<String, String> queryParams, HttpServletRequest request) {
 		User user = this.userService.findByUsernameAndPassword(
 				queryParams.get("username"),
 				queryParams.get("password"));
 		
 		if(user == null) {
 			//TODO: Return message that user is not found.
+			return new ResponseEntity<String>("Incorrect user or password", HttpStatus.BAD_REQUEST);	
 		}
 		else { 
 			HttpSession session = request.getSession();
 			session.setAttribute("userId", user.getPlayerId());
 			session.setAttribute("user", user);
 			System.out.println((Integer)session.getAttribute("userId"));
-			//TODO: Return message that user was found and redirect to dashboard
+			return new ResponseEntity<String>("Signed in", HttpStatus.OK);			
 		}
 	}
 	
+	@GetMapping(path = "/logout", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<String>signOut(HttpServletRequest request) {
+		HttpSession session = request.getSession(false);
+		
+		if(session != null) {
+			session.invalidate();
+			return new ResponseEntity<String>("Logged out",HttpStatus.OK);
+		}
+		return new ResponseEntity<String>("Already signed out", HttpStatus.BAD_REQUEST);	
+	}
 	
 	/*
 	 * @GetMapping(path = "/all", produces = MediaType.APPLICATION_JSON_VALUE)

@@ -1,6 +1,8 @@
 package com.revature.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -44,9 +46,10 @@ public class CampaignController {
 	//TODO: Return message if campaign is made or not. Add Json return to GetMapping.
 	//TODO: Add exception handling for duplicate campaign
 	@PostMapping(path = "/createCampaign", consumes = MediaType.APPLICATION_JSON_VALUE)
-	public void createCampaign(@RequestBody Campaign campaign, HttpServletRequest request) {
+	public void createCampaign(@RequestParam Map<String, String>queryParams, HttpServletRequest request) {
 		HttpSession session = request.getSession(false);
 		if(session != null) {
+			Campaign campaign = new Campaign(queryParams.get("name"),Integer.valueOf(queryParams.get("playerCount")));
 			//Get User object from session
 			User user = userService.findById((Integer) session.getAttribute("userId"));
 			if(user != null) {
@@ -81,8 +84,8 @@ public class CampaignController {
 					//Save current campaign id
 					session.setAttribute("currentCampaignId", campaign.getCampaignId());
 					
+					user.getCampaigns().add(campaign);
 					campaign.getUsers().add(user);
-					System.out.println((Integer)session.getAttribute("currentCampaignId"));
 					this.campaignService.save(campaign);
 					
 				}
@@ -104,6 +107,29 @@ public class CampaignController {
 		return this.campaignService.findByName(name);
 	}
 
+	
+	@GetMapping(path = "/getUserCampaigns", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<String>> getAllCampaigns(HttpServletRequest request){
+		HttpSession session = request.getSession(false);
+		if(session != null) {
+			User user = (User) userService.findById((Integer) session.getAttribute("userId"));
+			
+			//get campaigns
+			List<String> campaignNames = new ArrayList<>();
+			Campaign campaign = new Campaign();
+			for(int x = 0; x < user.getCampaigns().size(); x++) {
+				campaign = user.getCampaigns().get(x);
+				campaignNames.add(campaign.getName());
+			}
+			return new ResponseEntity<List<String>>(campaignNames, HttpStatus.OK);
+		}
+		else {
+			return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+		}
+		
+
+	}
+	
 	
 	@GetMapping(path = "/getAll", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Campaign>> getAllCampaigns(){
