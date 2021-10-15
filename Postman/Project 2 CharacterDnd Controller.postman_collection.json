@@ -1,0 +1,96 @@
+{
+	"info": {
+		"_postman_id": "c76dc756-ff25-46d0-b373-050d29ec2e55",
+		"name": "Project 2 CharacterDnd Controller",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Character",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Corus Toliades\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/character/createCharacter",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"character",
+						"createCharacter"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Characters",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Corus Toliades\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/character/createCharacter",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"character",
+						"createCharacter"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Select Character",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		},
+		{
+			"name": "Get All User Characters",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/character/getAllByUser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"character",
+						"getAllByUser"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
