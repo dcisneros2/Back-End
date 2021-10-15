@@ -1,7 +1,9 @@
 package com.revature.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -55,9 +57,9 @@ public class CharacterDndController {
 			
 				Campaign campaign = campaignService.getById((Integer) session.getAttribute("currentCampaignId"));
 				if (campaign != null) {
+					campaign.getCharacters().add(characterDnd);
 					characterDnd.setUser(user);
 					characterDnd.setCampaign(campaign);
-					campaign.getCharacters().add(characterDnd);
 					this.characterDndService.save(characterDnd);
 				}
 				else {
@@ -101,8 +103,11 @@ public class CharacterDndController {
 			User user = userService.findById((Integer) session.getAttribute("userId"));
 			if(user != null) {
 				List<String> names = new ArrayList<>();
+				
+				
 				for(int x=0; x< user.getCharacters().size(); x++) {
-					names.add(user.getCharacters().get(x).getName());
+					names.add("name: " + user.getCharacters().get(x).getName() + "," + "campaign: " + user.getCharacters().get(x).getCampaign().getName());
+					
 				}
 				return names;
 			}
@@ -113,9 +118,6 @@ public class CharacterDndController {
 			return null;		
 	}
 	
-
-	
-
 	@GetMapping(path = "/getCharacter", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<CharacterDnd> getCharacterByName(@RequestParam String name) {
 		return new ResponseEntity<CharacterDnd>(this.characterDndService.findByName(name), HttpStatus.OK);

@@ -12,6 +12,7 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import lombok.EqualsAndHashCode;
@@ -31,6 +32,7 @@ import lombok.ToString;
 
 @Entity
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "characterId")
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
 
 @Table(name = "character_db")
 
@@ -39,7 +41,7 @@ public class CharacterDnd {
 	@Column(name = "characterId") 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int characterId;
-	@Column(name = "name")
+	@Column(name = "name", unique = true)
 	String name;
 	
 	

@@ -44,14 +44,13 @@ public class CharacterSheetController {
 			CharacterDnd character = characterDndService.getById((Integer)session.getAttribute("characterId"));
 			if (character.getCharacterSheet() == null) {
 				CharacterSheet characterSheet = new CharacterSheet();
-				InventorySheet inventorySheet = new InventorySheet();
+				//InventorySheet inventorySheet = new InventorySheet();
 				
 				session.setAttribute("characterSheetId", characterSheet.getCharacterSheetId());
 				character.setCharacterSheet(characterSheet);
 				
 				
-				characterSheet.setInventorySheet(inventorySheet);
-				//TODO: Return cannot be deserialized
+				//characterSheet.setInventorySheet(inventorySheet);
 				characterSheet.setCharacter(character);
 				return this.characterSheetService.save(characterSheet);
 			}

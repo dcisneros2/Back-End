@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,15 +33,28 @@ public class InventorySheetController {
 		this.inventorySheetService = inventorySheetService;
 		}
 	
-	@PostMapping(path = "/",  produces = MediaType.APPLICATION_JSON_VALUE)
+	
+	@GetMapping(path = "/",  produces = MediaType.APPLICATION_JSON_VALUE)
 	public InventorySheet createCharacterSheet(HttpServletRequest request) {
 		HttpSession session = request.getSession(false);
 		
 		if(session != null) {
 			
-			CharacterDnd character = characterDndService.getById((Integer)session.getAttribute("characterId"));
-			return character.getCharacterSheet().getInventorySheet();
 			
+			
+			CharacterDnd character = characterDndService.getById((Integer)session.getAttribute("characterId"));
+			
+			if(character.getCharacterSheet() == null) {
+				InventorySheet inventorySheet = new InventorySheet();
+				inventorySheetService.getById(character.getCharacterSheet().getCharacterSheetId());
+				
+				character.getCharacterSheet().setInventorySheet(inventorySheet);
+				inventorySheet.setCharacterSheet(character.getCharacterSheet());
+				return inventorySheetService.save(inventorySheet);
+			}
+			else
+				return character.getCharacterSheet().getInventorySheet();
+
 		}
 		else {
 			//TODO: No session. Should not happen.

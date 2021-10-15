@@ -75,7 +75,7 @@ public class CampaignController {
 		HttpSession session = request.getSession(false);
 		if(session != null) {
 			//Get User object from session
-			User user = userService.findById((Integer) session.getAttribute("userId"));
+				User user = userService.findById((Integer) session.getAttribute("userId"));
 			if(user != null) {
 				//Add user to existing campaign.
 				Campaign campaign = this.campaignService.findByName(name);
@@ -83,10 +83,12 @@ public class CampaignController {
 				if(campaign != null) {
 					//Save current campaign id
 					session.setAttribute("currentCampaignId", campaign.getCampaignId());
-					
-					user.getCampaigns().add(campaign);
-					campaign.getUsers().add(user);
-					this.campaignService.save(campaign);
+					//If user not already assigned to campaign, assign
+					if(!campaign.getUsers().contains(user)) {
+						user.getCampaigns().add(campaign);
+						campaign.getUsers().add(user);
+						this.campaignService.save(campaign);
+					}
 					
 				}
 				else {

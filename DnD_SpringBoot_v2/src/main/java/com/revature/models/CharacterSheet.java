@@ -11,6 +11,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import lombok.EqualsAndHashCode;
@@ -30,6 +31,7 @@ import lombok.ToString;
 @Entity
 
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "characterSheetId")
+
 @Table(name = "charactersheet_db")
 
 public class CharacterSheet {
@@ -170,6 +172,7 @@ public class CharacterSheet {
 	
 	
 	@OneToOne
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}) 
 	@JoinColumn(name = "characterId")
 	private CharacterDnd character;
 	

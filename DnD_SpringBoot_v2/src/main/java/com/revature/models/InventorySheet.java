@@ -14,6 +14,25 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+//Lombok
+@Getter
+@Setter
+@NoArgsConstructor
+//@AllArgsConstructor
+@ToString
+@EqualsAndHashCode
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "inventorySheetId")
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
 @Entity
 @Table(name = "inventory_db")
 
@@ -24,7 +43,7 @@ public class InventorySheet {
 	int inventorySheetId;
 	
 	@OneToOne
-	@JoinColumn(name = "characterSheetId")
+	@JoinColumn(name = "characterSheetId", unique = true)
 	private CharacterSheet characterSheet;
 	
 	@ManyToMany
@@ -32,5 +51,21 @@ public class InventorySheet {
 			joinColumns = @JoinColumn(name = "inventorySheetId"),
 			inverseJoinColumns = @JoinColumn(name = "itemId")
 			)
-	private List<Items> items = new ArrayList<>();
+	private List<Item> items = new ArrayList<>();
+	
+	public CharacterSheet getCharacterSheet(){
+		return characterSheet;
+	}
+	
+	public void setCharacterSheet(CharacterSheet characterSheet){
+		this.characterSheet = characterSheet;
+	}
+	
+	public List<Item> getItems(){
+		return items;
+	}
+	
+	public void setItems(List<Item> items) {
+		this.items = items;
+	}
 }

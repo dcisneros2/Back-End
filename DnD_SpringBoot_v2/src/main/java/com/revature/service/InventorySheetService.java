@@ -1,5 +1,7 @@
 package com.revature.service;
 
+import java.util.Optional;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +27,10 @@ public class InventorySheetService {
 		this.inventorySheetRepository = inventorySheetRepository;
 	}
 
-	
+	public InventorySheet getById(int id) {
+		return this.inventorySheetRepository.getById(id);
+	}
+
 	
 	public InventorySheet save(InventorySheet inventorySheet) {
 		return this.inventorySheetRepository.save(inventorySheet);
