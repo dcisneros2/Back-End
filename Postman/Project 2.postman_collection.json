@@ -1,0 +1,447 @@
+{
+	"info": {
+		"_postman_id": "2919f28c-d1ca-422f-8ab4-38953029168e",
+		"name": "Project 2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Campaign Controller",
+			"item": [
+				{
+					"name": "Create Campaign",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"New York 5\",\r\n    \"playerCount\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/campaign/createCampaign?name=New York&playerCount=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"campaign",
+								"createCampaign"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "New York"
+								},
+								{
+									"key": "playerCount",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Campaigns",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/campaign/getAll",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"campaign",
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Campaign by Name",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/campaign/getCampaign?name=New York",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"campaign",
+								"getCampaign"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "New York"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Select Campaign for User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/campaign/selectCampaign?name=Dwindurin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"campaign",
+								"selectCampaign"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Dwindurin"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Current User Campaigns",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/campaign/getUserCampaigns",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"campaign",
+								"getUserCampaigns"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Character Sheet Controller",
+			"item": [
+				{
+					"name": "Create Character Sheet",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/character/sheet/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"character",
+								"sheet",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CharacterDnd Controller",
+			"item": [
+				{
+					"name": "Create Character",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Corus Toliades\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/character/createCharacter?name=Smithy Lock",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"character",
+								"createCharacter"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Smithy Lock"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Characters",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Corus Toliades\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/character/getAll",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"character",
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Select Character",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/character/selectCharacter?name=Corus Toliades",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"character",
+								"selectCharacter"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Corus Toliades"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All User Characters",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/character/getAllByUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"character",
+								"getAllByUser"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User Controller",
+			"item": [
+				{
+					"name": "Create New User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/index/createUser?username=Laxus1&password=fairy&accountType=player",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"index",
+								"createUser"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "Laxus1"
+								},
+								{
+									"key": "password",
+									"value": "fairy"
+								},
+								{
+									"key": "accountType",
+									"value": "player"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign In User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/index/signIn?username=Laxus1&password=fairy",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"index",
+								"signIn"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "Laxus1"
+								},
+								{
+									"key": "password",
+									"value": "fairy"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/index/createUser?username=Laxus1&password=fairy&accountType=player",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"index",
+								"createUser"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "Laxus1"
+								},
+								{
+									"key": "password",
+									"value": "fairy"
+								},
+								{
+									"key": "accountType",
+									"value": "player"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find User by Username",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/index/getUser?username=Laxus1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"index",
+								"getUser"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "Laxus1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
