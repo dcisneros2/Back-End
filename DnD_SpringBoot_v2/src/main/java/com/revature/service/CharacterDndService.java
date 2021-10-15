@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.models.CharacterDnd;
+import com.revature.models.User;
 import com.revature.repositories.CharacterDndRepository;
 
 @Transactional
@@ -27,6 +28,10 @@ public class CharacterDndService {
 	public void save(CharacterDnd characterDnd) {
 		this.characterDndRepository.save(characterDnd);
 	}
+
+	public CharacterDnd getById(int id) {
+		return this.characterDndRepository.getById(id);
+	}
 	
 	public List<CharacterDnd> findAll() {
 		return this.characterDndRepository.findAll(); 
@@ -34,7 +39,10 @@ public class CharacterDndService {
 
 	public CharacterDnd findByName(String name) {
 		return this.characterDndRepository.findByName(name);
+		
 	}
+	
+	
 	  
 	 
 }

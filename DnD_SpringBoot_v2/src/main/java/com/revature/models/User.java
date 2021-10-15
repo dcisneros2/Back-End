@@ -9,11 +9,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.transaction.Transactional;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import lombok.EqualsAndHashCode;
@@ -53,7 +55,8 @@ public class User {
 	@ManyToMany(mappedBy = "users")
 	private List<Campaign> campaigns = new ArrayList<>();
 
-	
+	@OneToMany(mappedBy = "user")
+	private List<CharacterDnd> characters = new ArrayList<>();
 	
 	public User(String username, String password, String accountType) {
 		super();
@@ -70,7 +73,14 @@ public class User {
 	public void setCampaigns(List<Campaign> campaigns) {
 		this.campaigns = campaigns;
 	}
+
+	public List<CharacterDnd> getCharacters(){
+		return characters;
+	}
 	
+	public void setCharacters(List<CharacterDnd> characters) {
+		this.characters = characters;
+	}
 	
 
 }

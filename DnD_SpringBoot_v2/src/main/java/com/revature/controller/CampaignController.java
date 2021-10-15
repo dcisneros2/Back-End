@@ -30,6 +30,7 @@ import lombok.ToString;
 @RequestMapping("/campaign")
 public class CampaignController {
 	private CampaignService campaignService;
+	
 	@Autowired
 	private UserService userService;
 	
@@ -50,7 +51,9 @@ public class CampaignController {
 			User user = userService.findById((Integer) session.getAttribute("userId"));
 			if(user != null) {
 				//Add user to new campaign.
+				user.getCampaigns().add(campaign);
 				campaign.getUsers().add(user);
+				
 				this.campaignService.save(campaign);
 			}
 			else {
@@ -77,6 +80,7 @@ public class CampaignController {
 				if(campaign != null) {
 					//Save current campaign id
 					session.setAttribute("currentCampaignId", campaign.getCampaignId());
+					
 					campaign.getUsers().add(user);
 					System.out.println((Integer)session.getAttribute("currentCampaignId"));
 					this.campaignService.save(campaign);
@@ -92,7 +96,6 @@ public class CampaignController {
 			//#TODO: Send return message that session is not found.
 			System.out.println("Session not found");
 		}
-		
 	}
 	
 	@GetMapping(path = "/getCampaign", produces = MediaType.APPLICATION_JSON_VALUE)

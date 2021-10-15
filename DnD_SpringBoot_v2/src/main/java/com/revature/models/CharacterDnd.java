@@ -10,8 +10,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,9 +26,12 @@ import lombok.ToString;
 @NoArgsConstructor
 //@AllArgsConstructor
 @ToString
+@EqualsAndHashCode
 
 
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "characterId")
+
 @Table(name = "character_db")
 
 public class CharacterDnd {
@@ -48,6 +54,10 @@ public class CharacterDnd {
 	@JoinColumn(name = "dungeonMasterId")
 	private DungeonMaster dungeonMaster;
 	
+	@ManyToOne
+	@JoinColumn(name= "userId")
+	private User user;
+	
 	public CharacterDnd(String name) {
 		this.name = name;
 	}
@@ -55,7 +65,7 @@ public class CharacterDnd {
 	public Campaign getCampaign() {
 		return campaign;
 	}
-	@JsonIgnore
+	//@JsonIgnore
 	public void setCampaign(Campaign campaign) {
 		this.campaign = campaign;
 	}
@@ -74,5 +84,13 @@ public class CharacterDnd {
 	
 	public void setCharacterSheet(CharacterSheet characterSheet) {
 		this.characterSheet = characterSheet;
+	}
+	
+	public User getUser() {
+		return user;
+	}
+	
+	public void setUser(User user) {
+		this.user = user;
 	}
 }
