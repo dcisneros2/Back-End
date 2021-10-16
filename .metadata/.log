@@ -12534,3 +12534,135 @@ Binding(COMMAND+SHIFT+C,
 
 !ENTRY org.eclipse.jdt.apt.pluggable.core 1 1 2021-10-13 18:16:25.716
 !MESSAGE Hibernate JPA 2 Static-Metamodel Generator 5.3.7.Final
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-10-13 18:29:34.144
+!MESSAGE processAuthDataRequest(JGitClientSession[git@github.com/192.30.255.112:22])[ssh-connection][publickey] sent algorithm rsa-sha2-512 but got back ssh-rsa from SSH-2.0-babeld-dee46824
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-10-13 18:30:26.111
+!MESSAGE processAuthDataRequest(JGitClientSession[git@github.com/192.30.255.112:22])[ssh-connection][publickey] sent algorithm rsa-sha2-512 but got back ssh-rsa from SSH-2.0-babeld-dee46824
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-10-13 18:30:30.558
+!MESSAGE processAuthDataRequest(JGitClientSession[git@github.com/192.30.255.112:22])[ssh-connection][publickey] sent algorithm rsa-sha2-512 but got back ssh-rsa from SSH-2.0-babeld-dee46824
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-10-13 18:41:43.178
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.dRrfBokf
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-10-13 18:41:43.182
+!MESSAGE unsubscribing from classpath changes: sts4.classpath.dRrfBokf
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-10-13 18:41:43.183
+!MESSAGE subsribers = {}
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-10-13 18:41:43.184
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.dRrfBokf => OK
+
+!ENTRY org.eclipse.ui.ide 4 4 2021-10-13 18:41:49.282
+!MESSAGE Problems saving workspace
+
+!ENTRY org.eclipse.ui.ide 2 1 2021-10-13 18:41:49.283
+!MESSAGE Problems occurred while trying to save the state of the workbench.
+!SUBENTRY 1 org.eclipse.core.resources 2 234 2021-10-13 18:41:49.283
+!MESSAGE The project description file (.project) for 'DnD_Management_System' was missing.  This file contains important information about the project.  A new project description file has been created, but some information about the project may have been lost.
+
+!ENTRY org.eclipse.core.resources 2 10035 2021-10-13 18:41:51.562
+!MESSAGE The workspace will exit with unsaved changes in this session.
+!SESSION 2021-10-14 10:05:41.083 -----------------------------------------------
+eclipse.buildId=4.12.0.202109130635
+java.version=16.0.2
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.springframework.boot.ide.branding.sts4 -keyring /Users/kwameduodu/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.springframework.boot.ide.branding.sts4 -keyring /Users/kwameduodu/.eclipse_keyring
+
+!ENTRY org.eclipse.core.resources 2 10035 2021-10-14 14:36:56.652
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jface 2 0 2021-10-14 14:37:02.499
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2021-10-14 14:37:02.499
+!MESSAGE A conflict occurred for COMMAND+SHIFT+T:
+Binding(COMMAND+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
+		Open a type in a Java editor,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@3c9971af,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(COMMAND+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.lsp4e.symbolinworkspace,Go to Symbol in Workspace,
+		,
+		Category(org.eclipse.lsp4e.category,Language Servers,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@4abdd5e,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-10-14 14:37:15.296
+!MESSAGE Entering DelegatingStreamConnectionProvider()
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-10-14 14:37:15.297
+!MESSAGE DelegatingStreamConnectionProvider classloader = org.eclipse.osgi.internal.loader.EquinoxClassLoader@16263fb2[org.springframework.tooling.boot.ls:1.28.0.202109130547(id=555)]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-10-14 14:37:15.303
+!MESSAGE SpringBootLanguageServer exists!
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-10-14 14:37:15.385
+!MESSAGE Instantiating ReusableClasspathListenerHandler
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-10-14 14:37:24.872
+!MESSAGE Boot LS startup time from start to initialized: 9541ms
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-10-14 14:37:25.209
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.CbHAYSmgisBatched = true
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-10-14 14:37:25.217
+!MESSAGE Setting up ClasspathListenerManager
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-10-14 14:37:25.224
+!MESSAGE Scheduling initial event for all projects ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-10-14 14:37:25.226
+!MESSAGE Scheduling initial event for all projects DONE
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-10-14 14:37:25.227
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-10-14 14:37:25.228
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.CbHAYSmg => OK
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-10-14 14:37:25.284
+!MESSAGE classpath=124 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-10-14 14:37:25.290
+!MESSAGE buffering callback sts4.classpath.CbHAYSmg SpringBoot false 124
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-10-14 14:37:25.292
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-10-14 14:37:25.293
+!MESSAGE classpath=1 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-10-14 14:37:25.294
+!MESSAGE buffering callback sts4.classpath.CbHAYSmg DnD_Management_System false 1
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-10-14 14:37:25.295
+!MESSAGE executing callback sts4.classpath.CbHAYSmg 2 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-10-14 14:37:26.855
+!MESSAGE executing callback sts4.classpath.CbHAYSmg SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-10-14 20:26:30.528
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.CbHAYSmg
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-10-14 20:26:30.557
+!MESSAGE unsubscribing from classpath changes: sts4.classpath.CbHAYSmg
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-10-14 20:26:30.562
+!MESSAGE subsribers = {}
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-10-14 20:26:30.564
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.CbHAYSmg => OK
+
+!ENTRY org.eclipse.ui 2 2 2021-10-14 20:26:31.165
+!MESSAGE Invalid property category path: org.springframework.ide.eclipse.beans.ui.properties.ProjectPropertyPage (bundle: org.springframework.ide.eclipse.xml.namespaces, propertyPage: org.springframework.ide.eclipse.beans.ui.namespaces.projectPropertyPage)

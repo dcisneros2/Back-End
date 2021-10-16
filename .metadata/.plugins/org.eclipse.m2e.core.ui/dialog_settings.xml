@@ -2,8 +2,8 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
-			<item value="/Users/kwameduodu/Back-End/SpringBoot"/>
 			<item value="/Users/kwameduodu/Back-End"/>
+			<item value="/Users/kwameduodu/Back-End/SpringBoot"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
