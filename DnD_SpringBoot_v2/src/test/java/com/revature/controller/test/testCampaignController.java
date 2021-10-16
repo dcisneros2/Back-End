@@ -1,5 +1,4 @@
 package com.revature.controller.test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -9,10 +8,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import java.util.Arrays;
-
 import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -91,7 +88,7 @@ public class testCampaignController {
 		}
 		
 		@Test
-		public void testGetAlln() {
+		public void testGetAll() {
 			
 //			when(campaignService.findAll()).thenReturn(Arrays.asList(campaign);
 			
