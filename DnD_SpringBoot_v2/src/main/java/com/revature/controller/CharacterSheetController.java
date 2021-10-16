@@ -1,8 +1,5 @@
 package com.revature.controller;
 
-import java.util.Map;
-
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -10,13 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.models.CharacterDnd;
 import com.revature.models.CharacterSheet;
-import com.revature.models.InventorySheet;
-import com.revature.models.SpellSheet;
 import com.revature.service.CharacterDndService;
 import com.revature.service.CharacterSheetService;
 @RestController("CharacterSheetController")
@@ -56,11 +50,10 @@ public class CharacterSheetController {
 			}
 		
 			else {
-				//TODO: Character already has sheet update it
-				return null;
+				//TODO: Character already has sheet send it as JSON
+				CharacterSheet characterSheet = character.getCharacterSheet();
 				
-				
-				
+				return character.getCharacterSheet();			
 			}
 		}
 		else {

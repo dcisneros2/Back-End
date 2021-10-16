@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.models.CharacterDnd;
-import com.revature.models.Item;
+import com.revature.models.charactersheet.Item;
 import com.revature.repositories.ItemRepository;
 import com.revature.service.CharacterDndService;
 import com.revature.service.ItemService;
@@ -106,7 +106,7 @@ public class ItemController {
 		
 		if(session != null) {
 			CharacterDnd character = characterDndService.getById((Integer)session.getAttribute("characterId"));
-			int id = character.getCharacterSheet().getCharacterSheetId();
+			int id = character.getCharacterSheet().getInventorySheet().getInventorySheetId();
 			return itemService.getAll(id);
 		}
 		else {

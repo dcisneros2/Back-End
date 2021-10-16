@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.revature.models.Item;
 import com.revature.models.User;
+import com.revature.models.charactersheet.Item;
 import com.revature.repositories.ItemRepository;
 
 @Service("itemService")
@@ -26,6 +26,7 @@ public class ItemService {
 	public List<Item> getAll(int id){
 		return this.itemRepository.findAll();
 	}
+	
 	
 	public Item save(Item item) {
 		return this.itemRepository.save(item);

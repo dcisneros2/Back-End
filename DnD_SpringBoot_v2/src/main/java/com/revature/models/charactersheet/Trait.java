@@ -1,7 +1,4 @@
-package com.revature.models;
-
-import java.util.ArrayList;
-import java.util.List;
+package com.revature.models.charactersheet;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,13 +6,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.revature.models.CharacterSheet;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -25,34 +23,26 @@ import lombok.ToString;
 
 @Entity
 
-//Lombok
+// Lombok
 @Getter
 @Setter
 @NoArgsConstructor
-//@AllArgsConstructor
+// @AllArgsConstructor
 @ToString
 @EqualsAndHashCode
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "itemId")
-@JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
-@Table(name = "items_db")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "traitId")
+@JsonIgnoreProperties(value = { "hibernateLazyInitializer", "handler" })
+@Table(name = "traits_db")
 
-public class Item {
+public class Trait {
+	
 	@Id
-	@Column(name = "itemId") 
+	@Column(name = "traitId") 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int itemId;
-	
-	@Column(name = "name")
-	String name;
-	@Column(name = "item_type")
-	String itemType;
-	@Column(name = "quantity")
-	int quantity;
-	@Column(name = "description")
-	String description;
-	
+	int traitId;
 	
 	@ManyToOne
-	@JoinColumn(name = "inventorySheetId")
-	private InventorySheet inventorySheet;
+	@JoinColumn(name = "abilitySheetId", unique = true)
+	private TraitSheet traitSheet;
+
 }

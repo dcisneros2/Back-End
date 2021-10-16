@@ -5,10 +5,11 @@ import org.springframework.stereotype.Repository;
 
 import com.revature.models.User;
 import com.revature.models.charactersheet.Item;
+import com.revature.models.charactersheet.Spell;
 
-@Repository("itemRepository")
-public interface ItemRepository extends JpaRepository<Item, Integer>{
+@Repository("spellRepository")
+public interface SpellRepository extends JpaRepository<Spell, Integer>{
 
-	public Item findByName(String name);
+	public Spell findByName(String name);
 	
 }

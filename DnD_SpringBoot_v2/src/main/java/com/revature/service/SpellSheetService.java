@@ -13,13 +13,13 @@ import com.revature.repositories.CharacterSheetRepository;
 import com.revature.repositories.InventorySheetRepository;
 
 @Transactional
-@Service("InventorySheetService")
+@Service("SpellSheetService")
 
-public class InventorySheetService {
+public class SpellSheetService {
 	private InventorySheetRepository inventorySheetRepository;
 
 	@Autowired
-	public InventorySheetService(InventorySheetRepository inventorySheetRepository) {
+	public SpellSheetService(InventorySheetRepository inventorySheetRepository) {
 		this.inventorySheetRepository = inventorySheetRepository;
 	}
 

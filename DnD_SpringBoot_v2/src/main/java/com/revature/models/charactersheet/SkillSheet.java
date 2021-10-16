@@ -1,4 +1,4 @@
-package com.revature.models;
+package com.revature.models.charactersheet;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +18,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.revature.models.CharacterSheet;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -32,37 +33,22 @@ import lombok.ToString;
 //@AllArgsConstructor
 @ToString
 @EqualsAndHashCode
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "inventorySheetId")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "skillSheetId")
 @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
 @Entity
-@Table(name = "inventory_db")
+@Table(name = "skillSheet_db")
 
-public class InventorySheet {
+public class SkillSheet {
 	@Id
-	@Column(name = "inventorySheetId") 
+	@Column(name = "skillSheetId") 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int inventorySheetId;
+	int skillSheetId;
 	
 	@OneToOne
 	@JoinColumn(name = "characterSheetId", unique = true)
 	private CharacterSheet characterSheet;
 	
-	@OneToMany(mappedBy = "inventorySheet")
-	private List<Item> items = new ArrayList<>();
+	@OneToMany(mappedBy = "skillSheet")
+	private List<Skill> skills = new ArrayList<>();
 	
-	public CharacterSheet getCharacterSheet(){
-		return characterSheet;
-	}
-	
-	public void setCharacterSheet(CharacterSheet characterSheet){
-		this.characterSheet = characterSheet;
-	}
-	
-	public List<Item> getItems(){
-		return items;
-	}
-	
-	public void setItems(List<Item> items) {
-		this.items = items;
-	}
 }

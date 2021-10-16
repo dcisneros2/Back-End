@@ -1,4 +1,4 @@
-package com.revature.models;
+package com.revature.models.charactersheet;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,12 +11,32 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.revature.models.CharacterSheet;
+
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+
+//Lombok
+@Getter
+@Setter
+@NoArgsConstructor
+//@AllArgsConstructor
+@ToString
+@EqualsAndHashCode
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "spellSheetId")
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
 @Entity
-
-
 @Table(name = "spellsheet_db")
 
 public class SpellSheet {
@@ -81,10 +101,6 @@ public class SpellSheet {
 	@JoinColumn(name = "characterSheetId")
 	private CharacterSheet characterSheet;
 	
-	@ManyToMany
-	@JoinTable(name = "spellSheet_spells",
-			joinColumns = @JoinColumn(name = "spellSheetId"),
-			inverseJoinColumns = @JoinColumn(name = "spellId")
-			)
-	private List<Spells> spells = new ArrayList<>();
+	@OneToMany(mappedBy = "spellSheet")
+	private List<Spell> spells = new ArrayList<>();
 }

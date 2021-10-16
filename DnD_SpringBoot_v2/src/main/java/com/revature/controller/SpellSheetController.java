@@ -17,10 +17,10 @@ import com.revature.service.CharacterDndService;
 import com.revature.service.CharacterSheetService;
 import com.revature.service.InventorySheetService;
 
-@RestController("InventorySheetController")
+@RestController("SpellSheetController")
 
-@RequestMapping("/character/inventorysheet")
-public class InventorySheetController {
+@RequestMapping("/character/spellsheet")
+public class SpellSheetController {
 	
 	@Autowired
 	private CharacterDndService characterDndService;
@@ -29,7 +29,7 @@ public class InventorySheetController {
 	
 	
 	@Autowired
-	public InventorySheetController(InventorySheetService inventorySheetService) {
+	public SpellSheetController(InventorySheetService inventorySheetService) {
 		this.inventorySheetService = inventorySheetService;
 		}
 	
