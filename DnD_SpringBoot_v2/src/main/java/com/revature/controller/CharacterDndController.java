@@ -43,7 +43,7 @@ public class CharacterDndController {
 
 	// TODO: Return message if characterDnd is made or not. Add Json return to
 	@PostMapping(path = "/createCharacter")
-	public void createCharacterDnd(@RequestParam String name, HttpServletRequest request) {
+	public ResponseEntity<String> createCharacterDnd(@RequestParam String name, HttpServletRequest request) {
 		HttpSession session = request.getSession(false);
 		
 		
@@ -51,6 +51,7 @@ public class CharacterDndController {
 			session.setAttribute("characterName", name);
 			CharacterDnd characterDnd = new CharacterDnd(name);
 
+			//TODO: Exception for getting nullpointerexception
 			User user = userService.findById((Integer)session.getAttribute("userId"));
 			if (user != null) {
 				
@@ -61,18 +62,24 @@ public class CharacterDndController {
 					characterDnd.setUser(user);
 					characterDnd.setCampaign(campaign);
 					this.characterDndService.save(characterDnd);
+					return new ResponseEntity<String>("Character created", HttpStatus.OK);
 				}
 				else {
 					//TODO: No campaign selected
+					return new ResponseEntity<String>("No campaign selected", HttpStatus.BAD_REQUEST);
 				}
 			}
 			else {
 				//TODO: User not logged in message
+				return new ResponseEntity<String>("No campaign selected", HttpStatus.BAD_REQUEST);
 			}
 			
 
 		}
-
+		else {
+			//TODO: User not logged in message
+			return new ResponseEntity<String>("No session", HttpStatus.BAD_REQUEST);
+		}
 	}
 
 	@PostMapping(path = "/selectCharacter")

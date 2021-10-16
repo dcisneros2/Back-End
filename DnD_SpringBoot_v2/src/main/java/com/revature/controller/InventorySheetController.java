@@ -44,9 +44,9 @@ public class InventorySheetController {
 			
 			CharacterDnd character = characterDndService.getById((Integer)session.getAttribute("characterId"));
 			
-			if(character.getCharacterSheet() == null) {
+			if(character.getCharacterSheet().getInventorySheet() == null) {
 				InventorySheet inventorySheet = new InventorySheet();
-				inventorySheetService.getById(character.getCharacterSheet().getCharacterSheetId());
+				//inventorySheetService.getById(character.getCharacterSheet().getCharacterSheetId());
 				
 				character.getCharacterSheet().setInventorySheet(inventorySheet);
 				inventorySheet.setCharacterSheet(character.getCharacterSheet());

@@ -23,7 +23,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8000/campaign/createCampaign?name=New York&playerCount=1",
+							"raw": "http://localhost:8000/campaign/createCampaign?name=New York City&playerCount=1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -41,7 +41,7 @@
 								},
 								{
 									"key": "name",
-									"value": "New York"
+									"value": "New York City"
 								},
 								{
 									"key": "playerCount",
@@ -128,7 +128,7 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/campaign/selectCampaign?name=Dwindurin",
+							"raw": "http://localhost:8000/campaign/selectCampaign?name=New York City",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -141,7 +141,7 @@
 							"query": [
 								{
 									"key": "name",
-									"value": "Dwindurin"
+									"value": "New York City"
 								}
 							]
 						}
@@ -214,7 +214,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8000/character/createCharacter?name=Smithy Lock",
+							"raw": "http://localhost:8000/character/createCharacter?name=Kistor Blasphss",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -227,7 +227,7 @@
 							"query": [
 								{
 									"key": "name",
-									"value": "Smithy Lock"
+									"value": "Kistor Blasphss"
 								}
 							]
 						}
@@ -272,7 +272,7 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/character/selectCharacter?name=Corus Toliades",
+							"raw": "http://localhost:8000/character/selectCharacter?name=Kistor Blasphss",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -285,7 +285,7 @@
 							"query": [
 								{
 									"key": "name",
-									"value": "Corus Toliades"
+									"value": "Kistor Blasphss"
 								}
 							]
 						}
@@ -387,7 +387,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/index/createUser?username=Laxus1&password=fairy&accountType=player",
+							"raw": "http://localhost:8000/index/logout",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -395,21 +395,7 @@
 							"port": "8000",
 							"path": [
 								"index",
-								"createUser"
-							],
-							"query": [
-								{
-									"key": "username",
-									"value": "Laxus1"
-								},
-								{
-									"key": "password",
-									"value": "fairy"
-								},
-								{
-									"key": "accountType",
-									"value": "player"
-								}
+								"logout"
 							]
 						}
 					},
@@ -436,6 +422,163 @@
 									"key": "username",
 									"value": "Laxus1"
 								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "InventorySheetController",
+			"item": [
+				{
+					"name": "Create Inventory Sheet",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/character/inventorysheet/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"character",
+								"inventorysheet",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Item Controller",
+			"item": [
+				{
+					"name": "Create Item",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/item/create?name=Large Health Potion&description=Heals hp&quantity=1&itemType=Support",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"item",
+								"create"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Large Health Potion"
+								},
+								{
+									"key": "description",
+									"value": "Heals hp"
+								},
+								{
+									"key": "quantity",
+									"value": "1"
+								},
+								{
+									"key": "itemType",
+									"value": "Support"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Item",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/item/update?itemId=4&name=Small Health Potion&description=Less hp regen&quantity=0&itemType=support",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"item",
+								"update"
+							],
+							"query": [
+								{
+									"key": "itemId",
+									"value": "4"
+								},
+								{
+									"key": "name",
+									"value": "Small Health Potion"
+								},
+								{
+									"key": "description",
+									"value": "Less hp regen"
+								},
+								{
+									"key": "quantity",
+									"value": "0"
+								},
+								{
+									"key": "itemType",
+									"value": "support"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Item",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/item/delete?name=Small Health Potion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"item",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Small Health Potion"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Character Items",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/item/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"item",
+								"all"
 							]
 						}
 					},

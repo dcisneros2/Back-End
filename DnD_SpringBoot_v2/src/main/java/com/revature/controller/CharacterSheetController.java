@@ -54,11 +54,12 @@ public class CharacterSheetController {
 				characterSheet.setCharacter(character);
 				return this.characterSheetService.save(characterSheet);
 			}
-
-			
+		
 			else {
 				//TODO: Character already has sheet update it
 				return null;
+				
+				
 				
 			}
 		}

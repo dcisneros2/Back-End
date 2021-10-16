@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -46,11 +47,7 @@ public class InventorySheet {
 	@JoinColumn(name = "characterSheetId", unique = true)
 	private CharacterSheet characterSheet;
 	
-	@ManyToMany
-	@JoinTable(name = "inventorySheet_items",
-			joinColumns = @JoinColumn(name = "inventorySheetId"),
-			inverseJoinColumns = @JoinColumn(name = "itemId")
-			)
+	@OneToMany(mappedBy = "inventorySheet")
 	private List<Item> items = new ArrayList<>();
 	
 	public CharacterSheet getCharacterSheet(){

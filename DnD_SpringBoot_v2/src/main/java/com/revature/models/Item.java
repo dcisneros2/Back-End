@@ -8,30 +8,51 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 
-
+//Lombok
+@Getter
+@Setter
+@NoArgsConstructor
+//@AllArgsConstructor
+@ToString
+@EqualsAndHashCode
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "itemId")
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
 @Table(name = "items_db")
 
 public class Item {
 	@Id
-	@Column(name = "itemsId") 
+	@Column(name = "itemId") 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int itemsId;
+	int itemId;
 	
 	@Column(name = "name")
 	String name;
 	@Column(name = "item_type")
-	String item_type;
+	String itemType;
 	@Column(name = "quantity")
 	int quantity;
 	@Column(name = "description")
 	String description;
 	
 	
-	@ManyToMany(mappedBy = "items")
-	private List<InventorySheet> inventorySheets = new ArrayList<>();
+	@ManyToOne
+	@JoinColumn(name = "inventorySheetId")
+	private InventorySheet inventorySheet;
 }
