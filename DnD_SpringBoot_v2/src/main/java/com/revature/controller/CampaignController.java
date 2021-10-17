@@ -46,6 +46,7 @@ public class CampaignController {
 	//TODO: Return message if campaign is made or not. Add Json return to GetMapping.
 	//TODO: Add exception handling for duplicate campaign
 	@PostMapping(path = "/createCampaign", consumes = MediaType.APPLICATION_JSON_VALUE)
+	
 	public void createCampaign(@RequestParam Map<String, String>queryParams, HttpServletRequest request) {
 		HttpSession session = request.getSession(false);
 		if(session != null) {
