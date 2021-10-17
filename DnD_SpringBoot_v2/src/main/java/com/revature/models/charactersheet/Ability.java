@@ -32,7 +32,7 @@ import lombok.ToString;
 @EqualsAndHashCode
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "abilityId")
 @JsonIgnoreProperties(value = { "hibernateLazyInitializer", "handler" })
-@Table(name = "abilities_db")
+@Table(name = "ability_db")
 
 public class Ability {
 	

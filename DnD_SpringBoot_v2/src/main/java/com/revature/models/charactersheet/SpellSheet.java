@@ -98,7 +98,7 @@ public class SpellSheet {
 	
 	
 	@OneToOne
-	@JoinColumn(name = "characterSheetId")
+	@JoinColumn(name = "characterSheetId", unique = true)
 	private CharacterSheet characterSheet;
 	
 	@OneToMany(mappedBy = "spellSheet")

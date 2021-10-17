@@ -1,20 +1,28 @@
 package com.revature.models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.revature.models.charactersheet.AbilitySheet;
+import com.revature.models.charactersheet.ActionSheet;
+import com.revature.models.charactersheet.FeatureSheet;
 import com.revature.models.charactersheet.InventorySheet;
+import com.revature.models.charactersheet.MoneySheet;
+import com.revature.models.charactersheet.ProficiencySheet;
+import com.revature.models.charactersheet.SkillSheet;
 import com.revature.models.charactersheet.SpellSheet;
+import com.revature.models.charactersheet.TraitSheet;
+import com.revature.models.charactersheet.VitalsSheet;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -52,12 +60,34 @@ public class CharacterSheet {
 	@JoinColumn(name = "characterId")
 	private CharacterDnd character;
 	
-	@OneToOne(mappedBy = "characterSheet")
+	@OneToOne(mappedBy = "characterSheet", cascade = CascadeType.ALL)
+	private AbilitySheet abilitySheet;
+	
+	@OneToOne(mappedBy = "characterSheet", cascade = CascadeType.ALL)
+	private ActionSheet actionSheet;
+	
+	@OneToOne(mappedBy = "characterSheet", cascade = CascadeType.ALL)
+	private FeatureSheet featureSheet;
+	
+	@OneToOne(mappedBy = "characterSheet", cascade = CascadeType.ALL)
 	private InventorySheet inventorySheet;
 	
-	@OneToOne(mappedBy = "characterSheet")
+	@OneToOne(mappedBy = "characterSheet", cascade = CascadeType.ALL)
+	private MoneySheet moneySheet;
+	
+	@OneToOne(mappedBy = "characterSheet", cascade = CascadeType.ALL)
+	private ProficiencySheet proficiencySheet;
+	
+	@OneToOne(mappedBy = "characterSheet", cascade = CascadeType.ALL)
+	private SkillSheet skillSheet;
+	
+	@OneToOne(mappedBy = "characterSheet", cascade = CascadeType.ALL)
 	private SpellSheet spellSheet;
 
-
+	@OneToOne(mappedBy = "characterSheet", cascade = CascadeType.ALL)
+	private TraitSheet TraitSheet;
+	
+	@OneToOne(mappedBy = "characterSheet", cascade = CascadeType.ALL)
+	private VitalsSheet vitalsSheet;
 	
 }
