@@ -174,12 +174,16 @@
 			"name": "Character Sheet Controller",
 			"item": [
 				{
-					"name": "Create Character Sheet",
+					"name": "Create Character Sheet ONLOAD",
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http://localhost:8000/character/sheet/create",
+							"raw": "http://localhost:8000/character/sheet/",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -188,7 +192,37 @@
 							"path": [
 								"character",
 								"sheet",
-								"create"
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Character Sheet",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"characterSheetId\": 1,\r\n    \"name\": \"Kistor Blasphss\",\r\n    \"campaign\": \"New York City\",\r\n    \"character\": {\r\n        \"characterId\": 1,\r\n        \"name\": \"Kistor Blasphss\",\r\n        \"campaign\": {\r\n            \"campaignId\": 1,\r\n            \"name\": \"New York City\",\r\n            \"playerCount\": 1,\r\n            \"users\": [\r\n                {\r\n                    \"playerId\": 1,\r\n                    \"username\": \"Laxus1\",\r\n                    \"password\": \"password\",\r\n                    \"accountType\": \"player\",\r\n                    \"campaigns\": [\r\n                        1\r\n                    ],\r\n                    \"characters\": [\r\n                        1\r\n                    ]\r\n                }\r\n            ],\r\n            \"characters\": [\r\n                1\r\n            ],\r\n            \"dungeonMasters\": []\r\n        },\r\n        \"characterSheet\": 1,\r\n        \"dungeonMaster\": null,\r\n        \"user\": 1\r\n    },\r\n    \"abilitySheet\": {\r\n        \"abilitySheetId\": 1,\r\n        \"characterSheet\": null,\r\n        \"abilities\": []\r\n    },\r\n    \"actionSheet\": {\r\n        \"actionSheetId\": 1,\r\n        \"characterSheet\": null,\r\n        \"actions\": []\r\n    },\r\n    \"featureSheet\": {\r\n        \"featureSheetId\": 1,\r\n        \"characterSheet\": null,\r\n        \"features\": []\r\n    },\r\n    \"inventorySheet\": {\r\n        \"inventorySheetId\": 1,\r\n        \"characterSheet\": null,\r\n        \"items\": []\r\n    },\r\n    \"moneySheet\": {\r\n        \"moneySheetId\": 1,\r\n        \"characterSheet\": null,\r\n        \"money\": []\r\n    },\r\n    \"proficiencySheet\": {\r\n        \"proficiencySheetId\": 1,\r\n        \"characterSheet\": null,\r\n        \"proficiencies\": []\r\n    },\r\n    \"skillSheet\": {\r\n        \"skillSheetId\": 1,\r\n        \"characterSheet\": null,\r\n        \"skills\": []\r\n    },\r\n    \"spellSheet\": {\r\n        \"spellSheetId\": 1,\r\n        \"spellcasting_class\": null,\r\n        \"spellcasting_ability\": null,\r\n        \"spell_save_dc\": 0,\r\n        \"spell_attack_bonus\": 0,\r\n        \"level_1_slots_total\": 0,\r\n        \"level_2_slots_total\": 0,\r\n        \"level_3_slots_total\": 0,\r\n        \"level_4_slots_total\": 0,\r\n        \"level_5_slots_total\": 0,\r\n        \"level_6_slots_total\": 0,\r\n        \"level_7_slots_total\": 0,\r\n        \"level_8_slots_total\": 0,\r\n        \"level_9_slots_total\": 0,\r\n        \"level_1_slots_expended\": 0,\r\n        \"level_2_slots_expended\": 0,\r\n        \"level_3_slots_expended\": 0,\r\n        \"level_4_slots_expended\": 0,\r\n        \"level_5_slots_expended\": 0,\r\n        \"level_6_slots_expended\": 0,\r\n        \"level_7_slots_expended\": 0,\r\n        \"level_8_slots_expended\": 0,\r\n        \"level_9_slots_expended\": 0,\r\n        \"characterSheet\": null,\r\n        \"spells\": []\r\n    },\r\n    \"vitalsSheet\": {\r\n        \"vitalsSheetId\": 1,\r\n        \"characterSheet\": null,\r\n        \"vitals\": []\r\n    },\r\n    \"traitSheet\": {\r\n        \"traitSheetId\": 1,\r\n        \"characterSheet\": null,\r\n        \"traits\": []\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/character/sheet/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"character",
+								"sheet",
+								""
 							]
 						}
 					},
@@ -319,11 +353,23 @@
 			"item": [
 				{
 					"name": "Create New User",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"Laxus1\",\r\n    \"password\" : \"password\",\r\n    \"accountType\" : \"player\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://localhost:8000/index/createUser?username=Laxus1&password=fairy&accountType=player",
+							"raw": "http://localhost:8000/index/createUser",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -336,15 +382,18 @@
 							"query": [
 								{
 									"key": "username",
-									"value": "Laxus1"
+									"value": "Laxus1",
+									"disabled": true
 								},
 								{
 									"key": "password",
-									"value": "fairy"
+									"value": "fairy",
+									"disabled": true
 								},
 								{
 									"key": "accountType",
-									"value": "player"
+									"value": "player",
+									"disabled": true
 								}
 							]
 						}
@@ -356,8 +405,17 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"Laxus1\",\r\n    \"password\":\"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://localhost:8000/index/signIn?username=Laxus1&password=fairy",
+							"raw": "http://localhost:8000/index/signIn",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -370,11 +428,13 @@
 							"query": [
 								{
 									"key": "username",
-									"value": "Laxus1"
+									"value": "Laxus1",
+									"disabled": true
 								},
 								{
 									"key": "password",
-									"value": "fairy"
+									"value": "fairy",
+									"disabled": true
 								}
 							]
 						}
