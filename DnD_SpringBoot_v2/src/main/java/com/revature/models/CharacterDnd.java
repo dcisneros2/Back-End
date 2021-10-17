@@ -79,7 +79,6 @@ public class CharacterDnd {
 	public void setDungeonMaster(DungeonMaster dungeonMaster) {
 		this.dungeonMaster = dungeonMaster;
 	}
-	
 	public CharacterSheet getCharacterSheet() {
 		return characterSheet;
 	}

@@ -1,5 +1,5 @@
 package com.revature.models.charactersheet.traits;
 
-public class Ideals {
+public class Bond {
 
 }

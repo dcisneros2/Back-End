@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.models.CharacterDnd;
 import com.revature.models.CharacterSheet;
+import com.revature.models.charactersheet.InventorySheet;
 import com.revature.service.CharacterDndService;
 import com.revature.service.CharacterSheetService;
 @RestController("CharacterSheetController")
@@ -38,13 +39,13 @@ public class CharacterSheetController {
 			CharacterDnd character = characterDndService.getById((Integer)session.getAttribute("characterId"));
 			if (character.getCharacterSheet() == null) {
 				CharacterSheet characterSheet = new CharacterSheet();
-				//InventorySheet inventorySheet = new InventorySheet();
+				InventorySheet inventorySheet = new InventorySheet();
 				
 				session.setAttribute("characterSheetId", characterSheet.getCharacterSheetId());
 				character.setCharacterSheet(characterSheet);
 				
 				
-				//characterSheet.setInventorySheet(inventorySheet);
+				characterSheet.setInventorySheet(inventorySheet);
 				characterSheet.setCharacter(character);
 				return this.characterSheetService.save(characterSheet);
 			}

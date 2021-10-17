@@ -41,9 +41,9 @@ public class Vitals {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int vitalsId;
 
-	@Column(name = "name")
+	@Column(name = "clazz")
 	String clazz;
-	@Column(name = "score")
+	@Column(name = "level")
 	int level;
 	@Column(name = "player")
 	String player;
@@ -73,7 +73,7 @@ public class Vitals {
 	int deathSaveFailure;
 
 	@ManyToOne
-	@JoinColumn(name = "abilitySheetId", unique = true)
+	@JoinColumn(name = "vitalsSheetId")
 	private VitalsSheet vitalsSheet;
 
 }

@@ -44,12 +44,9 @@ public class Skill {
 	@Column(name = "name") 
 	String name;
 
-	@Column(name = "value")
-	int value;
-	
 	@Column(name = "modifier")
 	String modifier;
-	
+
 	@Column(name = "proficiency")
 	Boolean proficiency;
 	
