@@ -1,0 +1,650 @@
+{
+	"info": {
+		"_postman_id": "2919f28c-d1ca-422f-8ab4-38953029168e",
+		"name": "Project 2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Campaign Controller",
+			"item": [
+				{
+					"name": "Create Campaign",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"New York 5\",\r\n    \"playerCount\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/campaign/createCampaign?name=New York City&playerCount=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"campaign",
+								"createCampaign"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "New York City"
+								},
+								{
+									"key": "playerCount",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Campaigns",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/campaign/getAll",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"campaign",
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Campaign by Name",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/campaign/getCampaign?name=New York",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"campaign",
+								"getCampaign"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "New York"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Select Campaign for User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/campaign/selectCampaign?name=New York City",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"campaign",
+								"selectCampaign"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "New York City"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Current User Campaigns",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/campaign/getUserCampaigns",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"campaign",
+								"getUserCampaigns"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Character Sheet Controller",
+			"item": [
+				{
+					"name": "Create Character Sheet ONLOAD",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/character/sheet/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"character",
+								"sheet",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Character Sheet",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"characterSheetId\": 1,\r\n    \"name\": \"Kistor Blasphss\",\r\n    \"campaign\": \"New York City\",\r\n    \"character\": {\r\n        \"characterId\": 1,\r\n        \"name\": \"Kistor Blasphss\",\r\n        \"campaign\": {\r\n            \"campaignId\": 1,\r\n            \"name\": \"New York City\",\r\n            \"playerCount\": 1,\r\n            \"users\": [\r\n                {\r\n                    \"playerId\": 1,\r\n                    \"username\": \"Laxus1\",\r\n                    \"password\": \"password\",\r\n                    \"accountType\": \"player\",\r\n                    \"campaigns\": [\r\n                        1\r\n                    ],\r\n                    \"characters\": [\r\n                        1\r\n                    ]\r\n                }\r\n            ],\r\n            \"characters\": [\r\n                1\r\n            ],\r\n            \"dungeonMasters\": []\r\n        },\r\n        \"characterSheet\": 1,\r\n        \"dungeonMaster\": null,\r\n        \"user\": 1\r\n    },\r\n    \"abilitySheet\": {\r\n        \"abilitySheetId\": 1,\r\n        \"characterSheet\": null,\r\n        \"abilities\": []\r\n    },\r\n    \"actionSheet\": {\r\n        \"actionSheetId\": 1,\r\n        \"characterSheet\": null,\r\n        \"actions\": []\r\n    },\r\n    \"featureSheet\": {\r\n        \"featureSheetId\": 1,\r\n        \"characterSheet\": null,\r\n        \"features\": []\r\n    },\r\n    \"inventorySheet\": {\r\n        \"inventorySheetId\": 1,\r\n        \"characterSheet\": null,\r\n        \"items\": []\r\n    },\r\n    \"moneySheet\": {\r\n        \"moneySheetId\": 1,\r\n        \"characterSheet\": null,\r\n        \"money\": []\r\n    },\r\n    \"proficiencySheet\": {\r\n        \"proficiencySheetId\": 1,\r\n        \"characterSheet\": null,\r\n        \"proficiencies\": []\r\n    },\r\n    \"skillSheet\": {\r\n        \"skillSheetId\": 1,\r\n        \"characterSheet\": null,\r\n        \"skills\": []\r\n    },\r\n    \"spellSheet\": {\r\n        \"spellSheetId\": 1,\r\n        \"spellcasting_class\": null,\r\n        \"spellcasting_ability\": null,\r\n        \"spell_save_dc\": 0,\r\n        \"spell_attack_bonus\": 0,\r\n        \"level_1_slots_total\": 0,\r\n        \"level_2_slots_total\": 0,\r\n        \"level_3_slots_total\": 0,\r\n        \"level_4_slots_total\": 0,\r\n        \"level_5_slots_total\": 0,\r\n        \"level_6_slots_total\": 0,\r\n        \"level_7_slots_total\": 0,\r\n        \"level_8_slots_total\": 0,\r\n        \"level_9_slots_total\": 0,\r\n        \"level_1_slots_expended\": 0,\r\n        \"level_2_slots_expended\": 0,\r\n        \"level_3_slots_expended\": 0,\r\n        \"level_4_slots_expended\": 0,\r\n        \"level_5_slots_expended\": 0,\r\n        \"level_6_slots_expended\": 0,\r\n        \"level_7_slots_expended\": 0,\r\n        \"level_8_slots_expended\": 0,\r\n        \"level_9_slots_expended\": 0,\r\n        \"characterSheet\": null,\r\n        \"spells\": []\r\n    },\r\n    \"vitalsSheet\": {\r\n        \"vitalsSheetId\": 1,\r\n        \"characterSheet\": null,\r\n        \"vitals\": []\r\n    },\r\n    \"traitSheet\": {\r\n        \"traitSheetId\": 1,\r\n        \"characterSheet\": null,\r\n        \"traits\": []\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/character/sheet/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"character",
+								"sheet",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CharacterDnd Controller",
+			"item": [
+				{
+					"name": "Create Character",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Corus Toliades\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/character/createCharacter?name=Kistor Blasphss",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"character",
+								"createCharacter"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Kistor Blasphss"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Characters",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Corus Toliades\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/character/getAll",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"character",
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Select Character",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/character/selectCharacter?name=Kistor Blasphss",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"character",
+								"selectCharacter"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Kistor Blasphss"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All User Characters",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/character/getAllByUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"character",
+								"getAllByUser"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User Controller",
+			"item": [
+				{
+					"name": "Create New User",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"Laxus1\",\r\n    \"password\" : \"password\",\r\n    \"accountType\" : \"player\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/index/createUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"index",
+								"createUser"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "Laxus1",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "fairy",
+									"disabled": true
+								},
+								{
+									"key": "accountType",
+									"value": "player",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign In User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"Laxus1\",\r\n    \"password\":\"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/index/signIn",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"index",
+								"signIn"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "Laxus1",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "fairy",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/index/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"index",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find User by Username",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/index/getUser?username=Laxus1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"index",
+								"getUser"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "Laxus1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "InventorySheetController",
+			"item": [
+				{
+					"name": "Create Inventory Sheet",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/character/inventorysheet/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"character",
+								"inventorysheet",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Item Controller",
+			"item": [
+				{
+					"name": "Create Item",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/item/create?name=Large Health Potion&description=Heals hp&quantity=1&itemType=Support",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"item",
+								"create"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Large Health Potion"
+								},
+								{
+									"key": "description",
+									"value": "Heals hp"
+								},
+								{
+									"key": "quantity",
+									"value": "1"
+								},
+								{
+									"key": "itemType",
+									"value": "Support"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Item",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/item/update?itemId=4&name=Small Health Potion&description=Less hp regen&quantity=0&itemType=support",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"item",
+								"update"
+							],
+							"query": [
+								{
+									"key": "itemId",
+									"value": "4"
+								},
+								{
+									"key": "name",
+									"value": "Small Health Potion"
+								},
+								{
+									"key": "description",
+									"value": "Less hp regen"
+								},
+								{
+									"key": "quantity",
+									"value": "0"
+								},
+								{
+									"key": "itemType",
+									"value": "support"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Item",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/item/delete?name=Small Health Potion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"item",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Small Health Potion"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Character Items",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/item/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"item",
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
