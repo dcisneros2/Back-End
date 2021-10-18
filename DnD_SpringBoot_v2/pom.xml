@@ -11,7 +11,7 @@
 	<groupId>com.revature</groupId>
 	<artifactId>DnDManagementSystem</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	
+	<packaging>war</packaging>
 	<name>DnDManagementSystem</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
@@ -52,7 +52,7 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-	<packaging>war</packaging>
+
 	<build>
 		<plugins>
 			<plugin>
