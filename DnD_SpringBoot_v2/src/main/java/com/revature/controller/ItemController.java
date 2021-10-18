@@ -104,19 +104,18 @@ public class ItemController {
 	}
 	
 	
-	@PostMapping(path = "/delete")
-	public void deleteItem(@RequestParam String name, HttpServletRequest request) {
+	@PostMapping(path = "/delete", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public void deleteItem(@RequestBody Item item, HttpServletRequest request) {
 		HttpSession session = request.getSession(false);
 		
 		if(session != null) {
 			CharacterDnd character = characterDndService.getById((Integer)session.getAttribute("characterId"));
 			if(character != null) {
-				Item item = itemService.findByName(name);
+				Item itemDelete = itemService.findByName(item.getName());
 				List<Item> items= character.getCharacterSheet().getInventorySheet().getItems();
-				items.remove(item);
+				items.remove(itemDelete);
 				character.getCharacterSheet().getInventorySheet().setItems(items);
-				itemService.delete(item);
-				
+				itemService.delete(itemDelete);
 			}
 			else {
 				//TODO: No character selected
