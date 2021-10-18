@@ -90,15 +90,16 @@ public class CharacterDndController {
 		}
 	}
 
-	@PostMapping(path = "/selectCharacter")
-	public void selectCharacterDnd(@RequestParam String name, HttpServletRequest request) {
-		CharacterDnd characterDnd = characterDndService.findByName(name);
+	@PostMapping(path = "/selectCharacter", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public void selectCharacterDnd(@RequestBody CharacterDnd character, HttpServletRequest request) {
+		CharacterDnd characterDnd = characterDndService.findByName(character.getName());
 		HttpSession session = request.getSession(false);
 		
 		if(session != null) {
 			if (characterDnd != null) {
 				session.setAttribute("characterId", characterDnd.getCharacterId());
 				//this.characterDndService.save(characterDnd);
+				System.out.println("Character selected");
 			} else {
 				// TODO: Character does not exist message
 				System.out.println("Character does not exist");
@@ -112,12 +113,11 @@ public class CharacterDndController {
 	}
 
 	@GetMapping(path = "/getAllByUser", produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<CharacterCampaign> getAllByUser(HttpServletRequest request){
+	public ResponseEntity<List<CharacterCampaign>> getAllByUser(HttpServletRequest request){
 		HttpSession session = request.getSession(false);
 		if(session != null) {
 			User user = userService.findById((Integer) session.getAttribute("userId"));
 			if(user != null) {
-				List<String> names = new ArrayList<>();
 				
 				List<CharacterCampaign> list = new ArrayList<>();
 				
@@ -128,7 +128,7 @@ public class CharacterDndController {
 					temp.setCampaign(user.getCharacters().get(x).getCampaign().getName());
 					list.add(temp);
 				}
-				return list;
+				return new ResponseEntity<List<CharacterCampaign>>(list, HttpStatus.OK);
 			}
 			else {
 				//TODO: User has no characters

@@ -28,4 +28,7 @@ public class CharacterSheetService {
 		return this.characterSheetRepository.save(characterSheet);
 	}
 	  
+	public CharacterSheet saveAll(CharacterSheet characterSheet) {
+		return this.characterSheetRepository.saveAndFlush(characterSheet);
+	}
 }

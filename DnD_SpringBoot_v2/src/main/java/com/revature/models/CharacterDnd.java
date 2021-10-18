@@ -31,8 +31,8 @@ import lombok.ToString;
 
 
 @Entity
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "characterId")
-@JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "characterId", scope = CharacterDnd.class)
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"}, allowSetters = true)
 
 @Table(name = "character_db")
 

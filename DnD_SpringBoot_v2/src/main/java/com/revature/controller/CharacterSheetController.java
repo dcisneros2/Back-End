@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -86,6 +87,7 @@ public class CharacterSheetController {
 				characterSheet.setSpellSheet(spellSheet);
 				characterSheet.setTraitSheet(traitSheet);
 				characterSheet.setVitalsSheet(vitalsSheet);
+				
 				character.setCharacterSheet(characterSheet);
 				session.setAttribute("characterSheetId", characterSheet.getCharacterSheetId());
 				
@@ -111,22 +113,43 @@ public class CharacterSheetController {
 
 	}
 
-	@PostMapping(path = "/update", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<CharacterSheet> updateCharacterSheet(CharacterSheet characterSheet,
+	@PostMapping(path = "/update", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<CharacterSheet> updateCharacterSheet(@RequestBody CharacterSheet characterSheet,
 			HttpServletRequest request) {
 		HttpSession session = request.getSession(false);
 
 		if (session != null) {
 
+//			System.out.println(characterSheet);
+
+			System.out.println(characterSheet.getName());
+			System.out.println(characterSheet.getCharacterSheetId());
+			
 			// TODO: Exception for get when characterId attribute is null
 			CharacterDnd character = characterDndService.getById((Integer) session.getAttribute("characterId"));
 
 			if (character.getCharacterSheet() != null) {
 
-				//character.setCharacterSheet(characterSheet);
+				
 				characterSheet.setCharacter(character);
+				
+				
+				character.setCharacterSheet(characterSheet);
+				character.getCharacterSheet().getAbilitySheet().setCharacterSheet(characterSheet);
+				character.getCharacterSheet().getVitalsSheet().setCharacterSheet(characterSheet);
+				character.getCharacterSheet().getActionSheet().setCharacterSheet(characterSheet);
+				character.getCharacterSheet().getFeatureSheet().setCharacterSheet(characterSheet);
+				character.getCharacterSheet().getInventorySheet().setCharacterSheet(characterSheet);
+				character.getCharacterSheet().getMoneySheet().setCharacterSheet(characterSheet);
+				character.getCharacterSheet().getProficiencySheet().setCharacterSheet(characterSheet);
+				character.getCharacterSheet().getSkillSheet().setCharacterSheet(characterSheet);
+				character.getCharacterSheet().getSpellSheet().setCharacterSheet(characterSheet);
+				character.getCharacterSheet().getTraitSheet().setCharacterSheet(characterSheet);
+				
+				
 				return new ResponseEntity<CharacterSheet>(this.characterSheetService.save(characterSheet),
 						HttpStatus.OK);
+				
 			}
 
 			else {
