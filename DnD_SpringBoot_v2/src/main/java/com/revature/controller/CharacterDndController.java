@@ -14,11 +14,13 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.models.Campaign;
+import com.revature.models.CharacterCampaign;
 import com.revature.models.CharacterDnd;
 import com.revature.models.User;
 import com.revature.service.CampaignService;
@@ -42,43 +44,49 @@ public class CharacterDndController {
 	}
 
 	// TODO: Return message if characterDnd is made or not. Add Json return to
-	@PostMapping(path = "/createCharacter", consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<String> createCharacterDnd(@RequestParam String name, HttpServletRequest request) {
+	@PostMapping(path = "/createCharacter", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<CharacterDnd> createCharacterDnd(@RequestBody CharacterDnd characterDnd, HttpServletRequest request) {
 		HttpSession session = request.getSession(false);
 		
 		
 		if (session != null) {
-			session.setAttribute("characterName", name);
-			CharacterDnd characterDnd = new CharacterDnd(name);
-
-			//TODO: Exception for getting nullpointerexception
-			User user = userService.findById((Integer)session.getAttribute("userId"));
-			if (user != null) {
+			if (characterDnd != null) {
+				session.setAttribute("characterName", characterDnd.getName());
+				//CharacterDnd characterDnd = new CharacterDnd(name);
+				//TODO: Exception for getting nullpointerexception
 				
-			
-				Campaign campaign = campaignService.getById((Integer) session.getAttribute("currentCampaignId"));
-				if (campaign != null) {
-					campaign.getCharacters().add(characterDnd);
-					characterDnd.setUser(user);
-					characterDnd.setCampaign(campaign);
-					this.characterDndService.save(characterDnd);
-					return new ResponseEntity<String>("Character created", HttpStatus.OK);
+				User user = userService.findById((Integer)session.getAttribute("userId"));
+				if (user != null) {
+					
+				
+					Campaign campaign = campaignService.getById((Integer) session.getAttribute("currentCampaignId"));
+					if (campaign != null) {
+						campaign.getCharacters().add(characterDnd);
+						characterDnd.setUser(user);
+						characterDnd.setCampaign(campaign);
+						this.characterDndService.save(characterDnd);
+						return new ResponseEntity<CharacterDnd>(characterDnd, HttpStatus.OK);
+					}
+					else {
+						//TODO: No campaign selected
+						return new ResponseEntity<CharacterDnd>(characterDnd, HttpStatus.BAD_REQUEST);
+					}
 				}
 				else {
-					//TODO: No campaign selected
-					return new ResponseEntity<String>("No campaign selected", HttpStatus.BAD_REQUEST);
+					//TODO: User not logged in message
+					return new ResponseEntity<CharacterDnd>(characterDnd, HttpStatus.BAD_REQUEST);
 				}
-			}
-			else {
-				//TODO: User not logged in message
-				return new ResponseEntity<String>("No campaign selected", HttpStatus.BAD_REQUEST);
+	
 			}
 			
-
+			else {
+				//TODO: Input is null
+				return new ResponseEntity<CharacterDnd>(characterDnd, HttpStatus.BAD_REQUEST);
+			}
 		}
 		else {
 			//TODO: User not logged in message
-			return new ResponseEntity<String>("No session", HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<CharacterDnd>(characterDnd, HttpStatus.BAD_REQUEST);
 		}
 	}
 
@@ -104,19 +112,23 @@ public class CharacterDndController {
 	}
 
 	@GetMapping(path = "/getAllByUser", produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<String> getAllByUser(HttpServletRequest request){
+	public List<CharacterCampaign> getAllByUser(HttpServletRequest request){
 		HttpSession session = request.getSession(false);
 		if(session != null) {
 			User user = userService.findById((Integer) session.getAttribute("userId"));
 			if(user != null) {
 				List<String> names = new ArrayList<>();
 				
+				List<CharacterCampaign> list = new ArrayList<>();
+				
 				
 				for(int x=0; x< user.getCharacters().size(); x++) {
-					names.add("name: " + user.getCharacters().get(x).getName() + "," + "campaign: " + user.getCharacters().get(x).getCampaign().getName());
-					
+					CharacterCampaign temp = new CharacterCampaign();
+					temp.setName(user.getCharacters().get(x).getName());
+					temp.setCampaign(user.getCharacters().get(x).getCampaign().getName());
+					list.add(temp);
 				}
-				return names;
+				return list;
 			}
 			else {
 				//TODO: User has no characters

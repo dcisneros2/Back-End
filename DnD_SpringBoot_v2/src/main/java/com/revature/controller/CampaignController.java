@@ -72,23 +72,24 @@ public class CampaignController {
 	}
 	
 	@PostMapping(path = "/selectCampaign")
-	public void selectCampaign(@RequestBody String name,HttpServletRequest request) {
+	public void selectCampaign(@RequestBody Campaign campaign,HttpServletRequest request) {
 		HttpSession session = request.getSession(false);
 		if(session != null) {
 			//Get User object from session
 				User user = userService.findById((Integer) session.getAttribute("userId"));
 			if(user != null) {
 				//Add user to existing campaign.
-				Campaign campaign = this.campaignService.findByName(name);
+				
 				
 				if(campaign != null) {
+					Campaign selectedCampaign = this.campaignService.findByName(campaign.getName());
 					//Save current campaign id
-					session.setAttribute("currentCampaignId", campaign.getCampaignId());
+					session.setAttribute("currentCampaignId", selectedCampaign.getCampaignId());
 					//If user not already assigned to campaign, assign
-					if(!campaign.getUsers().contains(user)) {
-						user.getCampaigns().add(campaign);
-						campaign.getUsers().add(user);
-						this.campaignService.save(campaign);
+					if(!selectedCampaign.getUsers().contains(user)) {
+						user.getCampaigns().add(selectedCampaign);
+						selectedCampaign.getUsers().add(user);
+						this.campaignService.save(selectedCampaign);
 					}
 					
 				}
