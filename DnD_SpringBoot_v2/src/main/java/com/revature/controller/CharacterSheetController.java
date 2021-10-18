@@ -87,11 +87,10 @@ public class CharacterSheetController {
 				characterSheet.setSpellSheet(spellSheet);
 				characterSheet.setTraitSheet(traitSheet);
 				characterSheet.setVitalsSheet(vitalsSheet);
-				
+
 				character.setCharacterSheet(characterSheet);
 				session.setAttribute("characterSheetId", characterSheet.getCharacterSheetId());
-				
-				
+
 				// Set name and campaign
 				characterSheet.setName(character.getName());
 				characterSheet.setCampaign(character.getCampaign().getName());
@@ -113,7 +112,7 @@ public class CharacterSheetController {
 
 	}
 
-	@PostMapping(path = "/update", produces = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(path = "/update", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<CharacterSheet> updateCharacterSheet(@RequestBody CharacterSheet characterSheet,
 			HttpServletRequest request) {
 		HttpSession session = request.getSession(false);
@@ -124,16 +123,14 @@ public class CharacterSheetController {
 
 			System.out.println(characterSheet.getName());
 			System.out.println(characterSheet.getCharacterSheetId());
-			
+
 			// TODO: Exception for get when characterId attribute is null
 			CharacterDnd character = characterDndService.getById((Integer) session.getAttribute("characterId"));
 
 			if (character.getCharacterSheet() != null) {
 
-				
 				characterSheet.setCharacter(character);
-				
-				
+
 				character.setCharacterSheet(characterSheet);
 				character.getCharacterSheet().getAbilitySheet().setCharacterSheet(characterSheet);
 				character.getCharacterSheet().getVitalsSheet().setCharacterSheet(characterSheet);
@@ -145,11 +142,10 @@ public class CharacterSheetController {
 				character.getCharacterSheet().getSkillSheet().setCharacterSheet(characterSheet);
 				character.getCharacterSheet().getSpellSheet().setCharacterSheet(characterSheet);
 				character.getCharacterSheet().getTraitSheet().setCharacterSheet(characterSheet);
-				
-				
+
 				return new ResponseEntity<CharacterSheet>(this.characterSheetService.save(characterSheet),
 						HttpStatus.OK);
-				
+
 			}
 
 			else {
