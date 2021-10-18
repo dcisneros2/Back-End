@@ -47,10 +47,10 @@ public class CampaignController {
 	//TODO: Add exception handling for duplicate campaign
 	@PostMapping(path = "/createCampaign", consumes = MediaType.APPLICATION_JSON_VALUE)
 	
-	public void createCampaign(@RequestParam Map<String, String>queryParams, HttpServletRequest request) {
+	public void createCampaign(@RequestBody Campaign campaign, HttpServletRequest request) {
 		HttpSession session = request.getSession(false);
 		if(session != null) {
-			Campaign campaign = new Campaign(queryParams.get("name"),Integer.valueOf(queryParams.get("playerCount")));
+			//Campaign campaign = new Campaign(queryParams.get("name"),Integer.valueOf(queryParams.get("playerCount")));
 			//Get User object from session
 			User user = userService.findById((Integer) session.getAttribute("userId"));
 			if(user != null) {
@@ -72,7 +72,7 @@ public class CampaignController {
 	}
 	
 	@PostMapping(path = "/selectCampaign")
-	public void selectCampaign(@RequestParam String name,HttpServletRequest request) {
+	public void selectCampaign(@RequestBody String name,HttpServletRequest request) {
 		HttpSession session = request.getSession(false);
 		if(session != null) {
 			//Get User object from session

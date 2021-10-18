@@ -47,55 +47,13 @@ public class SpellSheet {
 	
 	//Character Spellcast Info (at top of character sheet)
 	@Column(name = "spellcasting_class")
-	String spellcasting_class;
+	String spellcastingClass;
 	@Column(name = "spellcasting_ability")
-	String spellcasting_ability;
+	String spellcastingAbility;
 	@Column(name = "spell_save_dc")
-	int spell_save_dc;
+	int spellSaveDc;
 	@Column(name = "spell_attack_bonus")
-	int spell_attack_bonus;
-	
-	
-	//Spell Slots
-	@Column(name = "level_1_slots_total")
-	int level_1_slots_total;
-	@Column(name = "level_2_slots_total")
-	int level_2_slots_total;
-	@Column(name = "level_3_slots_total")
-	int level_3_slots_total;
-	@Column(name = "level_4_slots_total")
-	int level_4_slots_total;
-	@Column(name = "level_5_slots_total")
-	int level_5_slots_total;
-	@Column(name = "level_6_slots_total")
-	int level_6_slots_total;
-	@Column(name = "level_7_slots_total")
-	int level_7_slots_total;
-	@Column(name = "level_8_slots_total")
-	int level_8_slots_total;
-	@Column(name = "level_9_slots_total")
-	int level_9_slots_total;
-	
-	//Spells Slots Expended
-	@Column(name = "level_1_slots_expended")
-	int level_1_slots_expended;
-	@Column(name = "level_2_slots_expended")
-	int level_2_slots_expended;
-	@Column(name = "level_3_slots_expended")
-	int level_3_slots_expended;
-	@Column(name = "level_4_slots_expended")
-	int level_4_slots_expended;
-	@Column(name = "level_5_slots_expended")
-	int level_5_slots_expended;
-	@Column(name = "level_6_slots_expended")
-	int level_6_slots_expended;
-	@Column(name = "level_7_slots_expended")
-	int level_7_slots_expended;
-	@Column(name = "level_8_slots_expended")
-	int level_8_slots_expended;
-	@Column(name = "level_9_slots_expended")
-	int level_9_slots_expended;
-	
+	int spellAttackBonus;
 	
 	@OneToOne
 	@JoinColumn(name = "characterSheetId", unique = true)

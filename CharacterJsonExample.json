@@ -1,18 +1,18 @@
 {
     "characterSheetId": 1,
-    "name": null,
-    "campaign": null,
+    "name": "Corus",
+    "campaign": "Seattle",
     "character": {
         "characterId": 1,
-        "name": "Kistor Blasphss",
+        "name": "Corus",
         "campaign": {
             "campaignId": 1,
-            "name": "New York City",
+            "name": "Seattle",
             "playerCount": 1,
             "users": [
                 {
                     "playerId": 1,
-                    "username": "Laxus1",
+                    "username": "Laxus2",
                     "password": "password",
                     "accountType": "player",
                     "campaigns": [
@@ -34,74 +34,97 @@
     },
     "abilitySheet": {
         "abilitySheetId": 1,
-        "characterSheet": null,
+        "characterSheet": 1,
         "abilities": []
     },
     "actionSheet": {
         "actionSheetId": 1,
-        "characterSheet": null,
+        "characterSheet": 1,
         "actions": []
     },
     "featureSheet": {
         "featureSheetId": 1,
-        "characterSheet": null,
+        "characterSheet": 1,
         "features": []
     },
     "inventorySheet": {
         "inventorySheetId": 1,
-        "characterSheet": null,
-        "items": []
+        "characterSheet": 1,
+        "items": [
+            {
+                "itemId": 1,
+                "name": "Speed Potion",
+                "weight": "2",
+                "value": "100",
+                "description": "run fast",
+                "inventorySheet": 1
+            }
+        ]
     },
     "moneySheet": {
         "moneySheetId": 1,
-        "characterSheet": null,
+        "characterSheet": 1,
         "money": []
     },
     "proficiencySheet": {
         "proficiencySheetId": 1,
-        "characterSheet": null,
+        "characterSheet": 1,
         "proficiencies": []
     },
     "skillSheet": {
         "skillSheetId": 1,
-        "characterSheet": null,
+        "characterSheet": 1,
         "skills": []
     },
     "spellSheet": {
         "spellSheetId": 1,
-        "spellcasting_class": null,
-        "spellcasting_ability": null,
-        "spell_save_dc": 0,
-        "spell_attack_bonus": 0,
-        "level_1_slots_total": 0,
-        "level_2_slots_total": 0,
-        "level_3_slots_total": 0,
-        "level_4_slots_total": 0,
-        "level_5_slots_total": 0,
-        "level_6_slots_total": 0,
-        "level_7_slots_total": 0,
-        "level_8_slots_total": 0,
-        "level_9_slots_total": 0,
-        "level_1_slots_expended": 0,
-        "level_2_slots_expended": 0,
-        "level_3_slots_expended": 0,
-        "level_4_slots_expended": 0,
-        "level_5_slots_expended": 0,
-        "level_6_slots_expended": 0,
-        "level_7_slots_expended": 0,
-        "level_8_slots_expended": 0,
-        "level_9_slots_expended": 0,
-        "characterSheet": null,
+        "spellcastingClass": null,
+        "spellcastingAbility": null,
+        "spellSaveDc": 0,
+        "spellAttackBonus": 0,
+        "level1SlotsTotal": 0,
+        "level2SlotsTotal": 0,
+        "level3SlotsTotal": 0,
+        "level4SlotsTotal": 0,
+        "level5SlotsTotal": 0,
+        "level6SlotsTotal": 0,
+        "level7SlotsTotal": 0,
+        "level8SlotsTotal": 0,
+        "level9SlotsTotal": 0,
+        "level1SlotsExpended": 0,
+        "level2SlotsExpended": 0,
+        "level3SlotsExpended": 0,
+        "level4SlotsExpended": 0,
+        "level5SlotsExpended": 0,
+        "level6SlotsExpended": 0,
+        "level7SlotsExpended": 0,
+        "level8SlotsExpended": 0,
+        "level9SlotsExpended": 0,
+        "characterSheet": 1,
         "spells": []
     },
     "vitalsSheet": {
         "vitalsSheetId": 1,
-        "characterSheet": null,
-        "vitals": []
+        "clazz": null,
+        "level": 0,
+        "player": null,
+        "race": null,
+        "alignment": null,
+        "armorClass": 0,
+        "initiative": null,
+        "currentHitDice": 0,
+        "hitDice": 0,
+        "currentHp": 0,
+        "totalHp": 0,
+        "healthPercent": 0,
+        "speed": null,
+        "deathSaveSuccess": 0,
+        "deathSaveFailure": 0,
+        "characterSheet": 1
     },
     "traitSheet": {
         "traitSheetId": 1,
-        "characterSheet": null,
+        "characterSheet": 1,
         "traits": []
     }
 }

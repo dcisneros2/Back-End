@@ -64,19 +64,32 @@ public class CharacterSheetController {
 				TraitSheet traitSheet = new TraitSheet();
 				VitalsSheet vitalsSheet = new VitalsSheet();
 
-				session.setAttribute("characterSheetId", characterSheet.getCharacterSheetId());
+				// bidirectional relationship so have to set both sides.
+				abilitySheet.setCharacterSheet(characterSheet);
+				actionSheet.setCharacterSheet(characterSheet);
+				featureSheet.setCharacterSheet(characterSheet);
+				inventorySheet.setCharacterSheet(characterSheet);
+				moneySheet.setCharacterSheet(characterSheet);
+				proficiencySheet.setCharacterSheet(characterSheet);
+				skillSheet.setCharacterSheet(characterSheet);
+				spellSheet.setCharacterSheet(characterSheet);
+				traitSheet.setCharacterSheet(characterSheet);
+				vitalsSheet.setCharacterSheet(characterSheet);
+				characterSheet.setAbilitySheet(abilitySheet);
+				characterSheet.setAbilitySheet(abilitySheet);
+				characterSheet.setActionSheet(actionSheet);
+				characterSheet.setFeatureSheet(featureSheet);
+				characterSheet.setInventorySheet(inventorySheet);
+				characterSheet.setMoneySheet(moneySheet);
+				characterSheet.setProficiencySheet(proficiencySheet);
+				characterSheet.setSkillSheet(skillSheet);
+				characterSheet.setSpellSheet(spellSheet);
+				characterSheet.setTraitSheet(traitSheet);
+				characterSheet.setVitalsSheet(vitalsSheet);
 				character.setCharacterSheet(characterSheet);
-				character.getCharacterSheet().setAbilitySheet(abilitySheet);
-				character.getCharacterSheet().setActionSheet(actionSheet);
-				character.getCharacterSheet().setFeatureSheet(featureSheet);
-				character.getCharacterSheet().setInventorySheet(inventorySheet);
-				character.getCharacterSheet().setMoneySheet(moneySheet);
-				character.getCharacterSheet().setProficiencySheet(proficiencySheet);
-				character.getCharacterSheet().setSkillSheet(skillSheet);
-				character.getCharacterSheet().setSpellSheet(spellSheet);
-				character.getCharacterSheet().setTraitSheet(traitSheet);
-				character.getCharacterSheet().setVitalsSheet(vitalsSheet);
-
+				session.setAttribute("characterSheetId", characterSheet.getCharacterSheetId());
+				
+				
 				// Set name and campaign
 				characterSheet.setName(character.getName());
 				characterSheet.setCampaign(character.getCampaign().getName());
@@ -110,7 +123,7 @@ public class CharacterSheetController {
 
 			if (character.getCharacterSheet() != null) {
 
-				character.setCharacterSheet(characterSheet);
+				//character.setCharacterSheet(characterSheet);
 				characterSheet.setCharacter(character);
 				return new ResponseEntity<CharacterSheet>(this.characterSheetService.save(characterSheet),
 						HttpStatus.OK);

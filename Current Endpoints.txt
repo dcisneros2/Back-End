@@ -1,0 +1,118 @@
+Post
+Create account
+
+Endpoint: http://localhost:8000/index/createUser
+Expects JSON: 
+{
+    "username" : "string",
+    "password" : "string",
+    "accountType" : "string"
+}
+Returns nothing
+
+Post
+Log in with account
+Endpoint: http://localhost:8000/index/signIn
+Expects JSON:
+{
+    "username":"string",
+    "password":"string"
+}
+Returns string JSON
+
+Get
+Log out
+Endpoint: http://localhost:8000/index/logout 
+Expects Nothing
+Returns string JSON
+
+
+=================================================================
+
+Get
+Load User Character and respective Campaigns
+Endpoint: http://localhost:8000/character/getAllByUser
+Expects nothing
+Returns string array
+[
+	"name: string, campaign: string",
+	"name: string, campaign: string",
+	...
+]
+
+Post
+Create Campaign
+Endpoint: http://localhost:8000/campaign/createCampaign
+Expects JSON
+{
+	"name":""
+}
+Returns Nothing
+
+Get
+Get user Campaigns
+http://localhost:8000/campaign/getUserCampaigns
+Expects Nothing
+Returns string JSON
+{
+	"name as string" , "name" ,...
+}
+
+Post
+Select campaign
+http://localhost:8000/campaign/selectCampaign
+Expects JSON
+{
+	"name":"string"
+}
+Returns nothing
+
+Post
+Create Character
+http://localhost:8000/character/createCharacter
+Expects JSON
+{
+	"name":"string"
+}
+Returns nothing
+
+Post 
+Select Character
+http://localhost:8000/character/selectCharacter
+Expects JSON
+{	
+	"name":"string"
+}
+Returns nothing
+
+====================================================
+
+
+Preferably OnLoad()
+Get
+Create Character Sheet For Selected Character
+http://localhost:8000/character/sheet/
+Expects nothing
+Returns JSON of entire character sheet
+{
+	
+}
+
+Post
+Update Character Sheet. (Only update fields that already exist, does not delete or create fields)
+http://localhost:8000/character/sheet/
+Expects JSON of entire Character sheet
+Returns JSON of entire updated character sheet
+
+Post
+Create Item for current character
+http://localhost:8000/item/create
+Expects JSON of item only
+{
+    "name":"string",
+    "weight":"string",
+    "value":"string",
+    "description":"string"
+}
+Returns JSON of entire Character sheet with new item
+

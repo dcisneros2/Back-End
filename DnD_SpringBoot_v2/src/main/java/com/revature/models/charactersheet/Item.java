@@ -44,10 +44,10 @@ public class Item {
 	
 	@Column(name = "name")
 	String name;
-	@Column(name = "item_type")
-	String itemType;
-	@Column(name = "quantity")
-	int quantity;
+	@Column(name = "weight")
+	String weight;
+	@Column(name = "value")
+	String value;
 	@Column(name = "description")
 	String description;
 	

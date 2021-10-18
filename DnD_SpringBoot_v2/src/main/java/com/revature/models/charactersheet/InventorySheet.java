@@ -3,6 +3,7 @@ package com.revature.models.charactersheet;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -48,7 +49,7 @@ public class InventorySheet {
 	@JoinColumn(name = "characterSheetId", unique = true)
 	private CharacterSheet characterSheet;
 	
-	@OneToMany(mappedBy = "inventorySheet")
+	@OneToMany(mappedBy = "inventorySheet", cascade = CascadeType.ALL)
 	private List<Item> items = new ArrayList<>();
 	
 	public CharacterSheet getCharacterSheet(){

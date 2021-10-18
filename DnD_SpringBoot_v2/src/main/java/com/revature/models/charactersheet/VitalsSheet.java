@@ -44,11 +44,42 @@ public class VitalsSheet {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int vitalsSheetId;
 	
+	@Column(name = "clazz")
+	String clazz;
+	@Column(name = "level")
+	int level;
+	@Column(name = "player")
+	String player;
+	@Column(name = "race")
+	String race;
+	@Column(name = "alignment")
+	String alignment;
+	@Column(name = "armorClass")
+	int armorClass;
+	@Column(name = "initiative")
+	String initiative;
+	@Column(name = "currentHitDice")
+	int currentHitDice;
+	@Column(name = "hitDice")
+	int hitDice;
+	@Column(name = "currentHp")
+	int currentHp;
+	@Column(name = "totalHp")
+	int totalHp;
+	@Column(name = "healthPercent")
+	int healthPercent;
+	@Column(name = "speed")
+	String speed;
+	@Column(name = "deathSaveSuccess")
+	int deathSaveSuccess;
+	@Column(name = "deathSaveFailure")
+	int deathSaveFailure;
+	
 	@OneToOne
 	@JoinColumn(name = "characterSheetId", unique = true)
 	private CharacterSheet characterSheet;
 	
-	@OneToMany(mappedBy = "vitalsSheet")
-	private List<Vitals> vitals = new ArrayList<>();
+	//@OneToMany(mappedBy = "vitalsSheet")
+	//private List<Vitals> vitals = new ArrayList<>();
 	
 }

@@ -40,7 +40,7 @@ public class SpellController {
 				// Create spell with parameter values
 				Spell spell = new Spell();
 				spell.setName(queryParams.get("name"));
-				spell.setDescription(queryParams.get("description"));
+				//spell.setDescription(queryParams.get("description"));
 				spell.setLevel(Integer.valueOf(queryParams.get("quantity")));
 
 				character.getCharacterSheet().getSpellSheet().getSpells().add(spell);
@@ -76,7 +76,7 @@ public class SpellController {
 				// character.getCharacterSheet().getInventorySheet().getSpells();
 				spell.setName(queryParams.get("name"));
 				spell.setLevel(Integer.valueOf(queryParams.get("level")));
-				spell.setDescription(queryParams.get("description"));
+				//spell.setDescription(queryParams.get("description"));
 
 				// character.getCharacterSheet().getInventorySheet().getSpells().contains(spell);
 

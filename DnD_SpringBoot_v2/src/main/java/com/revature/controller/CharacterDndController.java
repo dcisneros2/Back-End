@@ -42,7 +42,7 @@ public class CharacterDndController {
 	}
 
 	// TODO: Return message if characterDnd is made or not. Add Json return to
-	@PostMapping(path = "/createCharacter")
+	@PostMapping(path = "/createCharacter", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<String> createCharacterDnd(@RequestParam String name, HttpServletRequest request) {
 		HttpSession session = request.getSession(false);
 		

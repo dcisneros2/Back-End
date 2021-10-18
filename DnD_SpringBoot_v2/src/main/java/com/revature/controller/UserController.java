@@ -37,7 +37,7 @@ public class UserController {
 
 	// TODO: Return message if account is made or not. Add Json return to
 	// GetMapping.
-	@GetMapping(path = "/createUser", consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(path = "/createUser", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public void createUser(@RequestBody User user) {
 		this.userService.save(user);
 	}
@@ -49,13 +49,6 @@ public class UserController {
 
 	@PostMapping(path = "/signIn", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<String> signIn(@RequestBody User user, HttpServletRequest request) {
-
-		// public ResponseEntity<String>signIn (@RequestParam Map<String, String>
-		// queryParams, HttpServletRequest request) {
-		/*
-		 * User user = this.userService.findByUsernameAndPassword(
-		 * queryParams.get("username"), queryParams.get("password"));
-		 */
 
 		user = this.userService.findByUsernameAndPassword(user.getUsername(), user.getPassword());
 

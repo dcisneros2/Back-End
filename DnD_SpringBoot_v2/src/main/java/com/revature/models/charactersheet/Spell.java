@@ -35,7 +35,7 @@ import lombok.ToString;
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "spellId")
 @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
 
-@Table(name = "spell_db")
+@Table(name = "spells_db")
 
 public class Spell {
 	@Id
@@ -47,6 +47,18 @@ public class Spell {
 	String name;
 	@Column(name = "level")
 	int level;
+	@Column(name = "castingTime")
+	String castingTime;
+	@Column(name = "rangee")
+	String range;
+	@Column(name = "duration")
+	String duration;
+	@Column(name = "school")
+	String school;
+	@Column(name = "save")
+	String save;
+	@Column(name = "damage")
+	String damage;
 	@Column(name = "description")
 	String description;
 

@@ -48,8 +48,6 @@ public class Campaign {
 	
 	@Column(name = "name", unique = true)
 	String name;
-	@Column(name = "player_count") 
-	int playerCount;
 	
 	
 	@ManyToMany(cascade = CascadeType.ALL)
@@ -65,7 +63,6 @@ public class Campaign {
 	
 	public Campaign(String name, int playerCount) {
 		this.name = name;
-		this.playerCount = playerCount;
 	}
 	
 	public List<User> getUsers() {
