@@ -111,6 +111,7 @@ public class SpellController {
 			} else {
 				// TODO: No character selected
 			}
+			
 		} else {
 			// TODO: No session
 		}
