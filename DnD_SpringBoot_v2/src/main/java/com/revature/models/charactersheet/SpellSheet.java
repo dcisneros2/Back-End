@@ -34,7 +34,7 @@ import lombok.ToString;
 //@AllArgsConstructor
 @ToString
 @EqualsAndHashCode
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "spellSheetId")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "spellSheetId", scope = SpellSheet.class)
 @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
 @Entity
 @Table(name = "spellsheet_db")

@@ -117,6 +117,8 @@ public class CharacterSheetController {
 			HttpServletRequest request) {
 		HttpSession session = request.getSession(false);
 
+		//return new ResponseEntity<CharacterSheet>(characterSheet , HttpStatus.NOT_FOUND);
+		
 		if (session != null) {
 
 //			System.out.println(characterSheet);

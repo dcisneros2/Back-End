@@ -33,7 +33,7 @@ import lombok.ToString;
 //@AllArgsConstructor
 @ToString
 @EqualsAndHashCode
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "moneySheetId")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "moneySheetId", scope = MoneySheet.class)
 @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
 @Entity
 @Table(name = "moneySheet_db")
