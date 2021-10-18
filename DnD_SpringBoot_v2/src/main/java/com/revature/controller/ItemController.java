@@ -100,7 +100,6 @@ public class ItemController {
 			//TODO: No session
 			return null;
 		}
-	
 		
 	}
 	

@@ -19,7 +19,7 @@ import com.revature.service.InventorySheetService;
 
 @RestController("SpellSheetController")
 
-@RequestMapping("/character/spellsheet")
+@RequestMapping("/spell")
 public class SpellSheetController {
 	
 	@Autowired
@@ -34,7 +34,7 @@ public class SpellSheetController {
 		}
 	
 	
-	@GetMapping(path = "/",  produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(path = "/create",  produces = MediaType.APPLICATION_JSON_VALUE)
 	public InventorySheet createCharacterSheet(HttpServletRequest request) {
 		HttpSession session = request.getSession(false);
 		
